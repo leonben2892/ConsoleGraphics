@@ -1,0 +1,6 @@
+﻿  Graphics.cpp
+\\green1\d\documents\visual studio 2015\projects\finalproject\common\graphics.cpp(97): warning C4244: 'argument': conversion from 'DWORD' to 'WORD', possible loss of data
+  EventEngine.cpp
+  Control.cpp
+  Generating Code...
+  Common.vcxproj -> \\green1\D\Documents\Visual Studio 2015\Projects\FinalProject\Debug\Common.lib
