@@ -11,7 +11,7 @@ private:
 
 public:
 
-	Panel(int , short, short, COORD);
+	Panel(int borderType, short x, short y, COORD cord);
 	void setCurrentFocus(int);
 	int getCurrentFocus();
 	void draw(Graphics & g, int x, int y, size_t z);

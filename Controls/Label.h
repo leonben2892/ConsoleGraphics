@@ -9,7 +9,7 @@ class Label: public Control
     private:
         string value;
     public:
-        Label(string);
+        Label(short x, short y,string);
         string getValue();
         void setValue(string);
         void draw(Graphics& g, int x, int y, size_t z);

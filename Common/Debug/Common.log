@@ -2,17 +2,9 @@
   Graphics.cpp
 c:\users\hananavr\documents\visual studio 2015\projects\finalproject\common\graphics.cpp(97): warning C4244: 'argument': conversion from 'DWORD' to 'WORD', possible loss of data
   EventEngine.cpp
+c:\users\hananavr\documents\visual studio 2015\projects\finalproject\common\eventengine.cpp(21): warning C4018: '<': signed/unsigned mismatch
   Control.cpp
   Border.cpp
-c:\users\hananavr\documents\visual studio 2015\projects\finalproject\common\border.cpp(5): warning C4129: 'D': unrecognized character escape sequence
-c:\users\hananavr\documents\visual studio 2015\projects\finalproject\common\border.cpp(5): warning C4129: 'C': unrecognized character escape sequence
-c:\users\hananavr\documents\visual studio 2015\projects\finalproject\common\border.cpp(5): warning C4129: 'B': unrecognized character escape sequence
-c:\users\hananavr\documents\visual studio 2015\projects\finalproject\common\border.cpp(5): warning C4305: 'argument': truncation from 'int' to 'char'
-c:\users\hananavr\documents\visual studio 2015\projects\finalproject\common\border.cpp(5): warning C4309: 'argument': truncation of constant value
-c:\users\hananavr\documents\visual studio 2015\projects\finalproject\common\border.cpp(9): warning C4129: 'C': unrecognized character escape sequence
-c:\users\hananavr\documents\visual studio 2015\projects\finalproject\common\border.cpp(9): warning C4129: 'B': unrecognized character escape sequence
-c:\users\hananavr\documents\visual studio 2015\projects\finalproject\common\border.cpp(9): warning C4305: 'argument': truncation from 'int' to 'char'
-c:\users\hananavr\documents\visual studio 2015\projects\finalproject\common\border.cpp(9): warning C4309: 'argument': truncation of constant value
   Label.cpp
   Generating Code...
   Common.vcxproj -> C:\Users\hananavr\Documents\Visual Studio 2015\Projects\FinalProject\Debug\Common.lib
