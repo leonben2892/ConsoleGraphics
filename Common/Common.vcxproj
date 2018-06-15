@@ -110,14 +110,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Controls\Label.cpp" />
+    <ClCompile Include="Border.cpp" />
     <ClCompile Include="Control.cpp" />
     <ClCompile Include="EventEngine.cpp" />
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="Panel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Controls\Label.h" />
+    <ClInclude Include="Border.h" />
     <ClInclude Include="Control.h" />
     <ClInclude Include="EventEngine.h" />
     <ClInclude Include="Graphics.h" />
+    <ClInclude Include="Panel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
