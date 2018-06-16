@@ -2,6 +2,7 @@
 #include "../Controls/Label.h"
 #include "../Common/EventEngine.h"
 #include "../Common/Panel.h"
+#include "../Common/CheckBox.h"
 
 int main(int argc, char** argv)
 {
@@ -18,6 +19,10 @@ int main(int argc, char** argv)
 	controls.push_back(&l2);	
 	p.getAllControls(&controls);
 	e.run(p);
+
+	//CheckBox newcb(10, 12, "hello");
+	//Control& l4 = newcb;
+	//e.run(newcb);
 
 
 }

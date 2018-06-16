@@ -1,10 +1,2 @@
-﻿  Panel.cpp
-  Graphics.cpp
-c:\users\hananavr\documents\visual studio 2015\projects\finalproject\common\graphics.cpp(97): warning C4244: 'argument': conversion from 'DWORD' to 'WORD', possible loss of data
-  EventEngine.cpp
-c:\users\hananavr\documents\visual studio 2015\projects\finalproject\common\eventengine.cpp(21): warning C4018: '<': signed/unsigned mismatch
-  Control.cpp
-  Border.cpp
-  Label.cpp
-  Generating Code...
-  Common.vcxproj -> C:\Users\hananavr\Documents\Visual Studio 2015\Projects\FinalProject\Debug\Common.lib
+﻿  CheckBox.cpp
+  Common.vcxproj -> C:\Users\Leon\Source\Repos\software_engineer_finalProject\Debug\Common.lib
