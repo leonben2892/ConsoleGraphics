@@ -14,10 +14,13 @@ protected:
 	Border border;
 	int borderType;
 	
+private:
+	static Control* focusObj;
+	
 public:
 	Control();
-	static Control* getFocus() { return NULL; };
-	static void setFocus(Control& control) {};
+	static Control* getFocus() { return focusObj; };
+	static void setFocus(Control& control) { focusObj = &control; };
 	
 	virtual void draw(Graphics& g, int x, int y, size_t z) {};
 	virtual void mousePressed(int x, int y, bool isLeft) {};
@@ -27,8 +30,6 @@ public:
 	virtual void getAllControls(vector<Control*>* controls) {};
 	virtual bool canGetFocus() { return FALSE; };
 	virtual bool myPureFunction() = 0;
-
-	virtual int getItemsCount() { return 1; }
 
 	virtual COORD getCord() { return cord; }
 

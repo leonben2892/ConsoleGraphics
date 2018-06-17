@@ -29,3 +29,5 @@ void CheckBox::draw(Graphics & g, int x, int y, size_t z)
 	SetConsoleCursorPosition(out, { cord.X + 1, (SHORT) y + 1 });
 	cout << this->cbValue;
 }
+
+bool CheckBox::canGetFocus() { return true; }

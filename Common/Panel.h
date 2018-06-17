@@ -17,7 +17,10 @@ public:
 	bool myPureFunction() { return true; };
 	virtual void Add(Control* control);
 
-	int getItemsCount();
+	virtual bool canGetFocus();
+
+	Control* getFocus();
+	void setFocus(Control& control);
 
 	virtual Control* GetIndex(int i);
 };

@@ -20,5 +20,7 @@ public:
 	string getCbValue();
 	void draw(Graphics & g, int x, int y, size_t z);
 	bool myPureFunction() { return true; };
+	bool canGetFocus();
+
 
 };

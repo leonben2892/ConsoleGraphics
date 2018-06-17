@@ -28,3 +28,5 @@ void TextBox::draw(Graphics & g, int x, int y, size_t z)
 
 	SetConsoleCursorPosition(out, { left + 1,top + 1 });
 }
+
+bool TextBox::canGetFocus() { return true; }
