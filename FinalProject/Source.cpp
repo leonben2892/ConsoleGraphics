@@ -63,7 +63,7 @@ int main(int argc, char** argv)
 	EventEngine e;
 	//e.run(c);
 
-	TextBox t(1, 20, 20, { 30,30 });
+	TextBox t(1, 20, 20, { 30,30 },"This is a text box, check if its not passing borders");
 	p.Add(&t);
 	
 	e.run(p);
