@@ -40,6 +40,13 @@ void Panel::draw(Graphics& g, int x, int y, size_t z)
 		break;
 	}
 }
+
+void Panel::Add(Control* control) 
+{
+	items.push_back(control);
+}
+
+
 void mousePressed(int x, int y, bool isLeft) {};
 void keyDown(int keyCode, char charecter) {};
 short getLeft() { return 0; };

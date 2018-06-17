@@ -18,7 +18,7 @@ public:
 	bool getIsChecked();
 	void setCbValue(string);
 	string getCbValue();
-	void draw(Graphics & g, int x, int y, COORD coord);
+	void draw(Graphics & g, int x, int y, size_t z);
 	bool myPureFunction() { return true; };
 
 };
