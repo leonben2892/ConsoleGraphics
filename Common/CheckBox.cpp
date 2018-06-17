@@ -1,10 +1,10 @@
 #include "CheckBox.h"
 
 CheckBox::CheckBox(short x, short y, string str) {
-	left = x;
-	top = y;
+	Control::left = x;
+	Control::top = y;
 	this->cbValue = str;
-	cord = { 5,5 };
+	Control::cord = { x + 2, y + 2 };
 }
 
 void CheckBox::setIsChecked(bool check) {

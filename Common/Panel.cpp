@@ -2,10 +2,10 @@
 
 Panel::Panel(int bord, short x, short y, COORD cor)
 {
-	borderType = bord;
-	left = x;
-	top = y;
-	cord = cor;
+	Control::borderType = bord;
+	Control::left = x;
+	Control::top = y;
+	Control::cord = cor;
 }
 
 
@@ -39,12 +39,28 @@ void Panel::draw(Graphics& g, int x, int y, size_t z)
 	default:
 		break;
 	}
+
+	for (auto child : items)
+	{
+		child->draw(g, child->getLeft(), child->getTop(), z);
+	}
 }
 
 void Panel::Add(Control* control) 
 {
 	items.push_back(control);
 }
+
+Control* Panel::GetIndex(int i)
+{
+	return this->items[i];
+}
+
+int Panel::getItemsCount()
+{
+	return items.size();
+}
+
 
 
 void mousePressed(int x, int y, bool isLeft) {};

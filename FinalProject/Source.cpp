@@ -51,17 +51,21 @@ int main(int argc, char** argv)
 	//Control& l4 = newcb;
 	//e.run(newcb);
 
-	Panel p(2, 6, 7, { 60,30 });
+	Panel p(2, 0, 0, { 60,50 });
 	Label l(10, 12, "Hello World");
 
 	p.Add(&l);
 
-	CheckBox c(3, 3,"hello");
+	CheckBox c(14, 14,"hello");
+
+	p.Add(&c);
 
 	EventEngine e;
 	//e.run(c);
 
-	TextBox t(2, 6, 7, { 20,20 });
-	e.run(t);
+	TextBox t(1, 20, 20, { 30,30 });
+	p.Add(&t);
+	
+	e.run(p);
 
 }

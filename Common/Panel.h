@@ -13,7 +13,11 @@ public:
 	Panel(int borderType, short x, short y, COORD cord);
 	void setCurrentFocus(int);
 	int getCurrentFocus();
-	void draw(Graphics & g, int x, int y, size_t z);
+	virtual void draw(Graphics & g, int x, int y, size_t z);
 	bool myPureFunction() { return true; };
-	void Add(Control* control);
+	virtual void Add(Control* control);
+
+	int getItemsCount();
+
+	virtual Control* GetIndex(int i);
 };

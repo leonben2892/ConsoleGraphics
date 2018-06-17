@@ -2,10 +2,10 @@
 
 TextBox::TextBox(int bord,short x, short y, COORD cor)
 {
-	left = x;
-	top = y;
-	cord = cor;
-	borderType = bord;
+	Control::left = x;
+	Control::top = y;
+	Control::cord = cor;
+	Control::borderType = bord;
 }
 
 void TextBox::draw(Graphics & g, int x, int y, size_t z)

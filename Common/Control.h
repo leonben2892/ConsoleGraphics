@@ -28,6 +28,8 @@ public:
 	virtual bool canGetFocus() { return FALSE; };
 	virtual bool myPureFunction() = 0;
 
+	virtual int getItemsCount() { return 1; }
+
 	virtual COORD getCord() { return cord; }
 
 	~Control();

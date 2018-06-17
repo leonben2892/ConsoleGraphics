@@ -3,8 +3,8 @@
 
 Label::Label(short x, short y,string value) : Control(), value(value)
 {
-	left = x;
-	top = y;
+	Control::left = x;
+	Control::top = y;
 }
 
 string Label::getValue()
@@ -22,5 +22,4 @@ void Label::draw(Graphics& g, int x, int y, size_t z)
 {
     if (!z)
         g.write(x,y,value);
-
 }
