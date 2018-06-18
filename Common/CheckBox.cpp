@@ -31,3 +31,25 @@ void CheckBox::draw(Graphics & g, int x, int y, size_t z)
 }
 
 bool CheckBox::canGetFocus() { return true; }
+
+void CheckBox::mousePressed(int x, int y, bool isLeft)
+{
+	// checking if mouse pressed within Checkbox area
+	if (y == this->top + 1)
+	{
+		if (x > this->left + 1 && x < this->left + this->cord.X - 1)
+		{
+			SetConsoleCursorPosition(out, { (SHORT)x ,(SHORT)y });
+			if (this->IsChecked) {
+				cout << '\x20';
+				this->IsChecked = false;
+			}
+			
+			else {
+				cout << "X";
+				this->IsChecked = true;
+			}
+		}
+		SetConsoleCursorPosition(out,{ (SHORT)x +1 , (SHORT)y +1 });
+	}
+}

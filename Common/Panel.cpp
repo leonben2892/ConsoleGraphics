@@ -62,7 +62,13 @@ bool Panel::canGetFocus() { return true; }
 
 void mousePressed(int x, int y, bool isLeft) {};
 void keyDown(int keyCode, char charecter) {};
-short getLeft() { return 0; };
-short getTop() { return 0; };
-void getAllControls(vector<Control*>* controls) {};
+
+short Panel::getLeft() { return left; }
+short Panel::getTop() { return top; }
+
+
+void Panel::getAllControls(vector<Control*>* controls)
+{
+	*controls = items;
+}
 

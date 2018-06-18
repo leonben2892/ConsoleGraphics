@@ -17,10 +17,17 @@ public:
 	bool myPureFunction() { return true; };
 	virtual void Add(Control* control);
 
+	void getAllControls(vector<Control*>* controls);
+
+	void mousePressed(int x, int y, bool isLeft) {};
+
 	virtual bool canGetFocus();
 
 	Control* getFocus();
 	void setFocus(Control& control);
 
 	virtual Control* GetIndex(int i);
+
+	short getLeft();
+	short getTop();
 };

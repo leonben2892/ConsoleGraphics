@@ -18,5 +18,6 @@ public:
 	bool myPureFunction() { return true; };
 
 	bool canGetFocus();
-
+	void mousePressed(int x, int y, bool isLeft);
+	//void keyDown(int keyCode, char charecter);
 };
