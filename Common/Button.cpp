@@ -8,6 +8,14 @@ Button::Button(int bord, short x, short y, COORD cor, string str) {
 	this->btnValue = str;
 }
 
+void Button::setBtnValue(string str) {
+	this->btnValue = str;
+}
+
+string Button::getBtnValue() {
+	return this->btnValue;
+}
+
 void Button::draw(Graphics & g, int x, int y, size_t z) {
 	CONSOLE_SCREEN_BUFFER_INFO info;
 	GetConsoleScreenBufferInfo(out, &info);

@@ -5,6 +5,9 @@
 //#include "../Common/CheckBox.h"
 #include "../Common/TextBox.h"
 #include "../Common/CheckList.h"
+//#include "../Common/Button.h"
+#include "../Common/MessageBox.h"
+
 
 
 //class Form : public Panel
@@ -47,6 +50,11 @@ int main(int argc, char** argv)
 
 	CheckList cc(1, (SHORT)4, (SHORT)4, { 30,14 }, new string[3]{ "one","two","three" });
 	p.Add(&cc);
+
+	Button btn(1, 40, 35, { 8,2 }, "Button");
+	p.Add(&btn);
+
+	//MessageBox mb (1, 5, 35, { 25,25 }, "This is a messagebox");
 	
 	e.run(p);
 
