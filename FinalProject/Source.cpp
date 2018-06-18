@@ -2,8 +2,9 @@
 #include "../Controls/Label.h"
 #include "../Common/EventEngine.h"
 #include "../Common/Panel.h"
-#include "../Common/CheckBox.h"
+//#include "../Common/CheckBox.h"
 #include "../Common/TextBox.h"
+#include "../Common/CheckList.h"
 
 
 //class Form : public Panel
@@ -33,38 +34,19 @@
 
 int main(int argc, char** argv)
 {
-	/*vector<Control*> controls;*/
-	//Label l(10, 12,"Hello World");
-	////Control& l2 = l;
-	//EventEngine e;
-	////e.run(l);
-
-	//Panel p(2, 6, 7, { 60,30 });
-	////Control& l3 = p;
-	////Control& l2 = l;
-	//
-	//Add(&l);
-	//e.run(p);
-
-
-	//CheckBox newcb(10, 12, "hello");
-	//Control& l4 = newcb;
-	//e.run(newcb);
-
-	Panel p(2, 0, 0, { 60,50 });
-	Label l(10, 12, "Hello World");
+	Panel p(2, 0, 0, { 80,50 });
+	Label l(50, 12, "Hello World");
 
 	p.Add(&l);
-
-	CheckBox c(14, 14,"hello");
-
-	p.Add(&c);
 
 	EventEngine e;
 	//e.run(c);
 
-	TextBox t(1, 20, 20, { 30,30 },"This is a text box, check if its not passing borders");
+	TextBox t(1, 40, 20, { 30,10 });
 	p.Add(&t);
+
+	CheckList cc(1, (SHORT)4, (SHORT)4, { 30,14 }, new string[3]{ "one","two","three" });
+	p.Add(&cc);
 	
 	e.run(p);
 
