@@ -4,7 +4,7 @@ CheckBox::CheckBox(short x, short y, string str) {
 	Control::left = x;
 	Control::top = y;
 	this->cbValue = str;
-	Control::cord = { x + 2, y + 2 };
+	Control::cord = { 2, 2 };
 }
 
 void CheckBox::setIsChecked(bool check) {
@@ -26,7 +26,7 @@ string CheckBox::getCbValue() {
 void CheckBox::draw(Graphics & g, int x, int y, size_t z) 
 {
 	border.drawSingleBorder(x, y, cord);
-	SetConsoleCursorPosition(out, { cord.X + 1, (SHORT) y + 1 });
+	SetConsoleCursorPosition(out, { (SHORT)(x + cord.X + 1), (SHORT) y + 1 });
 	cout << this->cbValue;
 }
 
