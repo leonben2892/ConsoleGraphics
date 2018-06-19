@@ -1,12 +1,13 @@
 #include "../Common/Graphics.h"
-#include "../Controls/Label.h"
+//#include "../Controls/Label.h"
 #include "../Common/EventEngine.h"
 #include "../Common/Panel.h"
 //#include "../Common/CheckBox.h"
 #include "../Common/TextBox.h"
 #include "../Common/CheckList.h"
 //#include "../Common/Button.h"
-#include "../Common/MessageBox.h"
+#include "../Common/Message_Box.h"
+#include "../Common/ComboBox.h"
 
 
 
@@ -53,6 +54,9 @@ int main(int argc, char** argv)
 
 	Button btn(1, 40, 35, { 8,2 }, "Button");
 	p.Add(&btn);
+
+	ComboBox cb(1, 10, 35, {10,2}, new string[3]{ "one","two","three" });
+	p.Add(&cb);
 
 	//MessageBox mb (1, 5, 35, { 25,25 }, "This is a messagebox");
 	
