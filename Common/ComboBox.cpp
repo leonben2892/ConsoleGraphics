@@ -48,9 +48,13 @@ bool ComboBox::canGetFocus() { return true; }
 void ComboBox::mousePressed(int x, int y, bool isLeft)
 {
 	if (x >= (left + cord.X + 1) && x <= (left + cord.X + 1)+2 && y >= top && y <= top + cord.Y) {
-		if (IsMenuOpenFlg == 0)
+		if (IsMenuOpenFlg == 0) {
 			IsMenuOpenFlg = 1;
-		//if (IsMenuOpenFlg == 1)
-		//	IsMenuOpenFlg = 0;
+			return;
+		}
+		if (IsMenuOpenFlg == 1) {
+			IsMenuOpenFlg = 0;
+			return;
+		}		
 	}
 }
