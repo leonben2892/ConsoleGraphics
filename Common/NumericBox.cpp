@@ -56,24 +56,19 @@ bool NumericBox::canGetFocus()
 
 void NumericBox::mousePressed(int x, int y, bool isLeft)
 {
-	if (!isLeft)
-		return;
-	if (x == left + 2 && y == top + 1)		// if "minus" button pressed
+	if (x == left + 2 && y == top + 2)		// if "minus" button pressed
 	{
 		if (currValue > minValue)
 		{
 			currValue -= 1;
-			/// need to print the current value again
 		}
+	}
 
-		else if (x == cord.X - 2 && y == top + 1)
+	else if (x == left + cord.X - 2 && y == top + 2)
+	{
+		if (currValue < maxValue)
 		{
-			if (currValue < maxValue)
-			{
-				currValue += 1;
-				/// need to print the current value again
-			}
+			currValue += 1;
 		}
-			
 	}
 }

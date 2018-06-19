@@ -60,8 +60,24 @@ Control* Panel::GetIndex(int i)
 bool Panel::canGetFocus() { return true; }
 
 
-void mousePressed(int x, int y, bool isLeft) {};
-void keyDown(int keyCode, char charecter) {};
+void Panel::mousePressed(int x, int y, bool isLeft)
+{
+	if (!isLeft)
+		return;
+	for (auto child : items)
+	{
+		child->mousePressed(x, y, isLeft);
+	}
+}
+
+void Panel::keyDown(int keyCode, char charecter)
+{
+	for (auto child : items)
+	{
+		if (child->canGetFocus())
+			child->keyDown(keyCode, charecter);
+	}
+}
 
 short Panel::getLeft() { return left; }
 short Panel::getTop() { return top; }

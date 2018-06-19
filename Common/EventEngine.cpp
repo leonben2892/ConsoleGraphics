@@ -7,7 +7,7 @@ EventEngine::EventEngine(DWORD input, DWORD output)
 	: _console(GetStdHandle(input)), _graphics(output)
 {
 	GetConsoleMode(_console, &_consoleMode);
-	SetConsoleMode(_console, ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT);
+	SetConsoleMode(_console, ENABLE_EXTENDED_FLAGS | ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT);
 }
 
 void EventEngine::run(Control &c)
@@ -79,4 +79,5 @@ void EventEngine::moveFocus(Control &main, Control *focused)
 			it = controls.begin();
 	while (!(*it)->canGetFocus());
 	Control::setFocus(**it);
+	
 }

@@ -37,3 +37,11 @@ void Button::draw(Graphics & g, int x, int y, size_t z) {
 }
 
 bool Button::canGetFocus() { return false; }
+
+void Button::mousePressed(int x, int y, bool isLeft)
+{
+	if (x > left  && x < left + cord.X && y > top && y < top + cord.Y)
+	{
+		// do something!!!
+	}
+}

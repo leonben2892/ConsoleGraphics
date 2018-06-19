@@ -19,12 +19,12 @@ public:
 
 	void getAllControls(vector<Control*>* controls);
 
-	void mousePressed(int x, int y, bool isLeft) {};
+	void mousePressed(int x, int y, bool isLeft) ;
+	void keyDown(int keyCode, char charecter) ;
 
 	virtual bool canGetFocus();
 
 	Control* getFocus();
-	void setFocus(Control& control);
 
 	virtual Control* GetIndex(int i);
 
