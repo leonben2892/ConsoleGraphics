@@ -44,12 +44,11 @@ int main(int argc, char** argv)
 	p.Add(&l);
 
 	EventEngine e;
-	//e.run(c);
 
 	TextBox t(1, 40, 20, { 30,10 });
 	p.Add(&t);
 
-	CheckList cc(1, (SHORT)4, (SHORT)4, { 30,14 }, new string[3]{ "one","two","three" });
+	CheckList cc(1, (short)4, (short)4, { 30,14 }, new string[3]{ "one","two","three" });
 	p.Add(&cc);
 
 	Button btn(1, 40, 35, { 8,2 }, "Button");
@@ -57,8 +56,6 @@ int main(int argc, char** argv)
 
 	ComboBox cb(1, 10, 35, {10,2}, new string[3]{ "one","two","three" });
 	p.Add(&cb);
-
-	//MessageBox mb (1, 5, 35, { 25,25 }, "This is a messagebox");
 	
 	e.run(p);
 

@@ -1,6 +1,7 @@
 #pragma once
 #include "Graphics.h"
 #include "Border.h"
+#include "BorderStrategy.h"
 #include <vector>
 
 using namespace std;
@@ -11,9 +12,10 @@ protected:
 	short left;
 	short top;
 	COORD cord;
-	Border border;
-	int borderType;
-	
+	//Border border;
+	//int borderType;
+	BorderStrategy *bs;
+
 private:
 	static Control* focusObj;
 	
