@@ -9,7 +9,7 @@ class TextBox : public Control
 private:
 	string text;
 	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
-	HANDLE in = GetStdHandle(STD_INPUT_HANDLE);
+	//HANDLE in = GetStdHandle(STD_INPUT_HANDLE);
 
 public:
 	TextBox(int bord,short x, short y, COORD cord);
@@ -20,5 +20,5 @@ public:
 
 	bool canGetFocus();
 	void mousePressed(int x, int y, bool isLeft);
-	//void keyDown(int keyCode, char charecter);
+	void keyDown(int keyCode, char charecter);
 };

@@ -21,6 +21,7 @@ private:
 	
 public:
 	Control();
+	Control(int borderType,short x,short y, COORD cor);
 	static Control* getFocus() { return focusObj; };
 	static void setFocus(Control& control) { focusObj = &control; };
 	

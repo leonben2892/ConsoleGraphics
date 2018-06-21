@@ -1,11 +1,8 @@
 #include "Label.h"
 #include <iostream>
 
-Label::Label(short x, short y,string value) : Control(), value(value)
-{
-	Control::left = x;
-	Control::top = y;
-}
+Label::Label(short x, short y, string value) 
+	: Control(0, x, y, { 0 ,0}), value(value) {}
 
 string Label::getValue()
 {

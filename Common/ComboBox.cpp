@@ -1,49 +1,15 @@
 #include "ComboBox.h"
 
-ComboBox::ComboBox(int bord, short x, short y, COORD cor, string comboOptions[]) {
-	//this->borderType = bord;
-	this->left = x;
-	this->top = y;
-	this->cord = cor;
-	IsMenuOpenFlg = 0;
-	switch (bord) {
-	case 0:
-		bs = new NoBorder();
-		break;
-	case 1:
-		bs = new SingleBorder();
-		break;
-	case 2:
-		bs = new DoubleBorder();
-		break;
-	default:
-		break;
-	}
+ComboBox::ComboBox(int bord, short x, short y, COORD cor, string comboOptions[]) 
+	: Control::Control(bord,x,y,cor) , IsMenuOpenFlg(0)
+{
 	for (size_t i = 0; i < comboOptions->size(); i++) {
 		items.push_back(new Label((short)(x + 1), (short)(y+1+1*i), comboOptions[i]));
 	}
 }
 
-void ComboBox::draw(Graphics & g, int x, int y, size_t z) {
-	//switch (borderType)
-	//{
-	//case 0:
-	//	break;
-	//case 1:
-	//	border.drawSingleBorder(x, y, cord); //Drawing main item box
-	//	border.drawSingleBorder((short)(x + cord.X + 1), y, { 2,2 }); //Drawing arrow box to open items menu
-	//	if(IsMenuOpenFlg == 1)
-	//		border.drawSingleBorder(x, (short)(y + cord.Y + 1), {cord.X,(short)(cord.Y + items.size())}); //Drawing items menu
-	//	break;
-	//case 2:
-	//	border.drawDoubleBorder(x, y, cord); //Drawing main item box
-	//	border.drawDoubleBorder((short)(x + cord.X + 1), y, { 2,2 }); //Drawing arrow box to open items menu
-	//	if (IsMenuOpenFlg == 1)
-	//		border.drawDoubleBorder(x, (short)(y + cord.Y + 1), { cord.X,(short)(cord.Y + items.size())}); //Drawing items menu
-	//	break;
-	//default:
-	//	break;
-	//}
+void ComboBox::draw(Graphics & g, int x, int y, size_t z) 
+{
 	bs->drawBorderType(x, y, cord);
 	bs->drawBorderType((short)(x + cord.X + 1), y, { 2,2 });
 	if (IsMenuOpenFlg == 1)

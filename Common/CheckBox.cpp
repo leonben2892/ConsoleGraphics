@@ -1,12 +1,7 @@
 #include "CheckBox.h"
 
-CheckBox::CheckBox(short x, short y, string str) {
-	Control::left = x;
-	Control::top = y;
-	this->cbValue = str;
-	Control::cord = { 2, 2 };
-	bs = new SingleBorder();
-}
+CheckBox::CheckBox(short x, short y, string str) 
+	: Control(1, x, y, { 2,2 }) , cbValue(str) {}
 
 void CheckBox::setIsChecked(bool check) {
 	this->IsChecked = check;
@@ -26,10 +21,11 @@ string CheckBox::getCbValue() {
 
 void CheckBox::draw(Graphics & g, int x, int y, size_t z) 
 {
-	//border.drawSingleBorder(x, y, cord);
 	bs->drawBorderType(x, y, cord);
-	SetConsoleCursorPosition(out, { (short)(x + cord.X + 1), (short) y + 1 });
-	cout << this->cbValue;
+	g.write(x + cord.X + 1, y + 1, cbValue);
+
+	if (IsChecked)
+		g.write(x + 1, y + 1, "X");
 }
 
 bool CheckBox::canGetFocus() { return true; }
@@ -37,21 +33,14 @@ bool CheckBox::canGetFocus() { return true; }
 void CheckBox::mousePressed(int x, int y, bool isLeft)
 {
 	// checking if mouse pressed within Checkbox area
-	if (y == this->top + 1)
+	if (y >= this->top && y <= this->top + this->cord.Y)
 	{
-		if (x > this->left + 1 && x < this->left + this->cord.X - 1)
+		if (x >= this->left && x <= this->left + this->cord.X + 1)
 		{
-			SetConsoleCursorPosition(out, { (SHORT)x ,(SHORT)y });
-			if (this->IsChecked) {
-				cout << '\x20';
-				this->IsChecked = false;
-			}
-			
-			else {
-				cout << "X";
+			if (this->IsChecked)
+				this->IsChecked = false;			
+			else
 				this->IsChecked = true;
-			}
 		}
-		SetConsoleCursorPosition(out,{ (SHORT)x +1 , (SHORT)y +1 });
 	}
 }

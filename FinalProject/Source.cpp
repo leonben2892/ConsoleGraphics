@@ -8,6 +8,7 @@
 //#include "../Common/Button.h"
 #include "../Common/Message_Box.h"
 #include "../Common/ComboBox.h"
+#include "../Common/NumericBox.h"
 
 
 
@@ -56,6 +57,9 @@ int main(int argc, char** argv)
 
 	ComboBox cb(1, 10, 35, {10,2}, new string[3]{ "one","two","three" });
 	p.Add(&cb);
+
+	NumericBox n(1, 3, 40, { 30,3 }, 5);
+	p.Add(&n);
 	
 	e.run(p);
 

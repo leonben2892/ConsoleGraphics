@@ -1,1 +1,17 @@
-﻿  Common.vcxproj -> C:\Users\hananavr\Documents\לימודים\שיטות בהנדסת תוכנה\FinalProject_GUI\Debug\Common.lib
+﻿  TextBox.cpp
+  CheckBox.cpp
+  Panel.cpp
+  NumericBox.cpp
+  Message_Box.cpp
+  Graphics.cpp
+c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\graphics.cpp(97): warning C4244: 'argument': conversion from 'DWORD' to 'WORD', possible loss of data
+  EventEngine.cpp
+  Control.cpp
+  ComboBox.cpp
+  CheckList.cpp
+  Button.cpp
+  BorderStrategy.cpp
+  Border.cpp
+  Label.cpp
+  Generating Code...
+  Common.vcxproj -> C:\Users\hananavr\Documents\לימודים\שיטות בהנדסת תוכנה\FinalProject_new\software_engineer_finalProject\Debug\Common.lib
