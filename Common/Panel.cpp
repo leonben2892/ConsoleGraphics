@@ -24,6 +24,7 @@ void Panel::draw(Graphics& g, int x, int y, size_t z)
 	{
 		child->draw(g, child->getLeft(), child->getTop(), z);
 	}
+	//g.moveTo(items[currentFocus]->getLeft()+1 , items[currentFocus]->getTop() +1);
 }
 
 void Panel::Add(Control* control) 
@@ -40,22 +41,30 @@ Control* Panel::GetIndex(int i)
 bool Panel::canGetFocus() { return true; }
 
 
-void Panel::mousePressed(int x, int y, bool isLeft)
+void Panel::mousePressed(int x, int y, bool isLeft, Graphics &g)
 {
+	int index = 0;
 	if (!isLeft)
 		return;
 	for (auto child : items)
 	{
-		child->mousePressed(x, y, isLeft);
+		if (g.isInside(x, y, child->getLeft(), child->getTop(), child->getLeft() + child->getCord().X, child->getTop() + child->getCord().Y))
+		{
+			child->mousePressed(x, y, isLeft, g);
+			if(child->canGetFocus())
+				setCurrentFocus(index);
+		}		
+		++index;
+				
 	}
 }
 
-void Panel::keyDown(int keyCode, char charecter)
+void Panel::keyDown(int keyCode, char charecter, Graphics &g)
 {
 	for (auto child : items)
 	{
 		if (child->canGetFocus())
-			child->keyDown(keyCode, charecter);
+			child->keyDown(keyCode, charecter , g);
 	}
 }
 

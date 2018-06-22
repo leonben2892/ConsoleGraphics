@@ -12,6 +12,7 @@ protected:
 	short left;
 	short top;
 	COORD cord;
+	
 	//Border border;
 	//int borderType;
 	BorderStrategy *bs;
@@ -26,8 +27,8 @@ public:
 	static void setFocus(Control& control) { focusObj = &control; };
 	
 	virtual void draw(Graphics& g, int x, int y, size_t z) {};
-	virtual void mousePressed(int x, int y, bool isLeft) {};
-	virtual void keyDown(int keyCode, char charecter) {};
+	virtual void mousePressed(int x, int y, bool isLeft, Graphics &g) {};
+	virtual void keyDown(int keyCode, char charecter, Graphics &g) {};
 	virtual short getLeft() { return left; };
 	virtual short getTop() { return top; };
 	virtual void getAllControls(vector<Control*>* controls) {};

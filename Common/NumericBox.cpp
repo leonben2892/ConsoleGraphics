@@ -35,9 +35,9 @@ bool NumericBox::canGetFocus()
 	return false; 
 }
 
-void NumericBox::mousePressed(int x, int y, bool isLeft)
-{
-	if (x >= left &&  x <= left +3 && y == top + 2)		// if "minus" button pressed
+void NumericBox::mousePressed(int x, int y, bool isLeft, Graphics &g)
+{	
+	if (x >= this->left &&  x <= this->left +3 && y >= this->top + 1 && y <= this->top +3)		// if "minus" button pressed
 	{
 		if (currValue > minValue)
 		{
@@ -45,7 +45,13 @@ void NumericBox::mousePressed(int x, int y, bool isLeft)
 		}
 	}
 
-	else if (x <= left + cord.X - 1 && x >= left + cord.X - 4 && y == top + 2)
+	//else if (g.isInside(x, y, left + this->cord.X, top, left + this->cord.X - 2, top + 2))
+	//{
+	//	if (currValue < maxValue)
+	//		currValue += 1;
+	//}
+
+	else if (x <= this->left + this->cord.X - 1 && x >= this->left + this->cord.X - 4 && y >= this->top + 1 && y <= this->top + 3)
 	{
 		if (currValue < maxValue)
 		{

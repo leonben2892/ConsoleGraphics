@@ -6,40 +6,43 @@ TextBox::TextBox(int bord,short x, short y, COORD cor)
 void TextBox::draw(Graphics & g, int x, int y, size_t z)
 {
 	bs->drawBorderType(x, y, cord);
-	SetConsoleCursorPosition(out, { left + 1,top + 1 });
+	g.write(x + this->text.length(), y + 1, this->text);
 }
 
 bool TextBox::canGetFocus() { return true; }
 
-void TextBox::mousePressed(int x, int y, bool isLeft)
+void TextBox::mousePressed(int x, int y, bool isLeft, Graphics &g)
 {
 	// checking if mouse pressed within textbox area
-	if (y > this->top + 1 && y < this->top + this->cord.Y)
+	if (g.isInside(x, y, left, top, left + cord.X, top + cord.Y))
 	{
-		if (x > this->left + 1 && x < this->left + this->cord.X - 1)
-		{
-			SetConsoleCursorPosition(out, { (SHORT)x ,(SHORT) y });
-		}
+		g.moveTo(x, y);
 	}
+		
 }
 
-void TextBox::keyDown(int keycode, char character)
+void TextBox::keyDown(int keycode, char character, Graphics& g)
 {
-	CONSOLE_SCREEN_BUFFER_INFO info;
-	GetConsoleScreenBufferInfo(out, &info);
-	if (keycode == 8)
+	COORD c = g.getCursorPos();
+	if (g.isInside(c.X, c.Y, this->left, this->top, this->left + cord.X, this->top + cord.Y))
 	{
-		if (info.dwCursorPosition.X - 1 == this->left)    // if we trying to delete char but we in text border position
-			return;
-		cout << '\x08';
-		cout << '\x0';
-	}
+		//if (keycode == 8)  // delete key
+		//{
+		//	if (info.dwCursorPosition.X - 1 == this->left)    // if we trying to delete char but we in text border position
+		//		return;
+		//	cout << '\x08';
+		//	cout << '\x0';
+		//}
 
-	else if (info.dwCursorPosition.X == this->left + this->cord.X)    // if we trying to exceed the textbox border
-		return;
+		//else if (info.dwCursorPosition.X == this->left + this->cord.X)    // if we trying to exceed the textbox border
+		//	return;
 
-	else if (keycode == '\x0D')      // if ENTER key pressed
-		// need to go down line
-
-	cout << character;      // printing the selected key
+		if (keycode == '\x0D')      // if ENTER key pressed
+		{
+			// need to go down line
+		}
+		//cout << character;      // printing the selected key
+		g.write((int)c.X, (int)c.Y, string(1, character));
+		this->text.push_back(character);
+	}	
 }

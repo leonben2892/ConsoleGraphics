@@ -20,6 +20,8 @@ public:
 	void write(wstring s);
 	void write(int x, int y, wstring s);
 	void setCursorVisibility(bool isVisible);
+	bool isInside(int x, int y, int left, int top, int width, int height);
+	COORD getCursorPos();
 private:
 	HANDLE _console;
 	Color _background, _foreground;
@@ -27,4 +29,3 @@ private:
 	void updateConsoleAttributes();
 };
 
-bool isInside(int x, int y, int left, int top, int width, int height);

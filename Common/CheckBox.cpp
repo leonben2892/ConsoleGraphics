@@ -30,7 +30,7 @@ void CheckBox::draw(Graphics & g, int x, int y, size_t z)
 
 bool CheckBox::canGetFocus() { return true; }
 
-void CheckBox::mousePressed(int x, int y, bool isLeft)
+void CheckBox::mousePressed(int x, int y, bool isLeft, Graphics &g)
 {
 	// checking if mouse pressed within Checkbox area
 	if (y >= this->top && y <= this->top + this->cord.Y)
@@ -43,4 +43,20 @@ void CheckBox::mousePressed(int x, int y, bool isLeft)
 				this->IsChecked = true;
 		}
 	}
+}
+
+void CheckBox::keyDown(int keyCode, char charecter, Graphics &g)
+{
+	COORD c = g.getCursorPos();
+	if (g.isInside(c.X, c.Y, left, top, left + cord.X, top + cord.Y))
+	{
+		if (keyCode == 32)
+		{
+			if (IsChecked)
+				IsChecked = false;
+			else
+				IsChecked = true;
+		}
+	}
+
 }

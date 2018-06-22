@@ -17,11 +17,12 @@ void EventEngine::run(Control &c)
 		if (redraw)
 		{
 			_graphics.clearScreen();
-			_graphics.setCursorVisibility(false);
+			_graphics.setCursorVisibility(true);
 			for (size_t z = 0; z < 1; ++z)
 			{
 				c.draw(_graphics, c.getLeft(), c.getTop(), z);
 			}	
+			_graphics.moveTo(Control::getFocus()->getLeft() + 1, Control::getFocus()->getTop() + 1);
 			redraw = false;
 		}
 
@@ -40,7 +41,7 @@ void EventEngine::run(Control &c)
 				if (code == VK_TAB)
 					moveFocus(c, f);
 				else
-					f->keyDown(code, chr);
+					f->keyDown(code, chr,_graphics);
 				redraw = true;
 			}
 			break;
@@ -53,7 +54,7 @@ void EventEngine::run(Control &c)
 			auto y = coord.Y - c.getTop();
 			if (button == FROM_LEFT_1ST_BUTTON_PRESSED || button == RIGHTMOST_BUTTON_PRESSED)
 			{
-				c.mousePressed(x, y, button == FROM_LEFT_1ST_BUTTON_PRESSED);
+				c.mousePressed(x, y, button == FROM_LEFT_1ST_BUTTON_PRESSED, _graphics);
 				redraw = true;
 			}
 			break;

@@ -97,9 +97,16 @@ void Graphics::updateConsoleAttributes()
 	SetConsoleTextAttribute(_console, attributes);
 }
 
-bool isInside(int x, int y, int left, int top, int width, int height)
+bool Graphics::isInside(int x, int y, int left, int top, int width, int height)
 {
 	x -= left;
 	y -= top;
 	return x >= 0 && y >= 0 && x < width && y < height;
+}
+
+COORD Graphics::getCursorPos()
+{
+	CONSOLE_SCREEN_BUFFER_INFO info;
+	GetConsoleScreenBufferInfo(_console, &info);
+	return info.dwCursorPosition;
 }

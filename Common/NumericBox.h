@@ -23,6 +23,6 @@ public:
 	bool canGetFocus();
 	bool myPureFunction() { return true; };
 
-	void mousePressed(int x, int y, bool isLeft);
+	void mousePressed(int x, int y, bool isLeft, Graphics &g);
 
 };

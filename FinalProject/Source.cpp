@@ -40,9 +40,9 @@
 int main(int argc, char** argv)
 {
 	Panel p(2, 0, 0, { 80,50 });
-	Label l(50, 12, "Hello World");
+	//Label l(50, 12, "Hello World");
 
-	p.Add(&l);
+	//p.Add(&l);
 
 	EventEngine e;
 

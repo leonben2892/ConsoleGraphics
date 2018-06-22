@@ -21,7 +21,8 @@ public:
 	void draw(Graphics & g, int x, int y, size_t z);
 	bool myPureFunction() { return true; };
 	bool canGetFocus();
-	void mousePressed(int x, int y, bool isLeft);
+	void mousePressed(int x, int y, bool isLeft, Graphics &g);
+	void keyDown(int keyCode, char charecter, Graphics &g);
 
 
 };

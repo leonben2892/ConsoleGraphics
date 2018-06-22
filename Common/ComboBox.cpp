@@ -14,21 +14,20 @@ void ComboBox::draw(Graphics & g, int x, int y, size_t z)
 	bs->drawBorderType((short)(x + cord.X + 1), y, { 2,2 });
 	if (IsMenuOpenFlg == 1)
 		bs->drawBorderType(x, (short)(y + cord.Y + 1), {cord.X, (short)(cord.Y + items.size())});
-	SetConsoleCursorPosition(out, { (short)(x +1), (short)(y + 1) });
-	cout << items.at(0)->getValue();
-	SetConsoleCursorPosition(out, { (short)(x+cord.X+1+1), (short)(y+1) });
-	cout << '\x1F';
+
+	g.write(x + 1, y + 1, items.at(0)->getValue());
+	
+	g.write(x + cord.X + 1 + 1, y + 1, "\x1F");
 	if (IsMenuOpenFlg == 1) {
 		for (short i = 0; i < (short)items.size(); i++) {
-			SetConsoleCursorPosition(out, { (short)(x + 1), (short)(y + cord.Y + 2 + i) });
-			cout << items.at(i)->getValue();
+			g.write(x + 1, y + cord.Y + 2 + i, items.at(i)->getValue());
 		}
 	}
 }
 
 bool ComboBox::canGetFocus() { return true; }
 
-void ComboBox::mousePressed(int x, int y, bool isLeft)
+void ComboBox::mousePressed(int x, int y, bool isLeft, Graphics &g)
 {
 	if (x >= (left + cord.X + 1) && x <= (left + cord.X + 1)+2 && y >= top && y <= top + cord.Y) {
 		if (IsMenuOpenFlg == 0) {

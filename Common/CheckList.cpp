@@ -17,10 +17,18 @@ void CheckList::draw(Graphics & g, int x, int y, size_t z)
 
 bool CheckList::canGetFocus() { return true; }
 
-void CheckList::mousePressed(int x, int y, bool isLeft)
+void CheckList::mousePressed(int x, int y, bool isLeft, Graphics &g)
 {
 	for (auto child : allCheckBoxes)
 	{
-		child->mousePressed(x, y, isLeft);
+		child->mousePressed(x, y, isLeft, g);
+	}
+}
+
+void CheckList::keyDown(int keyCode, char charecter, Graphics &g)
+{
+	for (auto child : allCheckBoxes)
+	{
+		child->keyDown(keyCode, charecter, g);
 	}
 }
