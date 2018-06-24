@@ -10,6 +10,7 @@ class CheckList : public Control {
 private:
 	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
 	vector<CheckBox*> allCheckBoxes;
+	int currentIndex;
 	//vector<CheckBox*> selectedCheckBoxes;
 	//string checkBoxesValues[];
 

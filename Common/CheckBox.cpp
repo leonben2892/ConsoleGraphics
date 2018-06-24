@@ -48,15 +48,19 @@ void CheckBox::mousePressed(int x, int y, bool isLeft, Graphics &g)
 void CheckBox::keyDown(int keyCode, char charecter, Graphics &g)
 {
 	COORD c = g.getCursorPos();
-	if (g.isInside(c.X, c.Y, left, top, left + cord.X, top + cord.Y))
-	{
-		if (keyCode == 32)
+		if (keyCode == 32 || keyCode == 13)   //Space or Enter key
 		{
 			if (IsChecked)
 				IsChecked = false;
 			else
 				IsChecked = true;
 		}
-	}
 
+}
+
+void CheckBox::setBackGround(Color color)
+{
+	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
+	//SetConsoleTextAttribute(out, color);
+	graphic.setBackground(color);
 }

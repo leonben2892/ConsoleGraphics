@@ -22,9 +22,13 @@ public:
 	void setCursorVisibility(bool isVisible);
 	bool isInside(int x, int y, int left, int top, int width, int height);
 	COORD getCursorPos();
+	void setCursorPos(int x, int y);
+	COORD getCurrentPosition();
+
 private:
 	HANDLE _console;
 	Color _background, _foreground;
+	COORD currentCursorPosition;
 
 	void updateConsoleAttributes();
 };

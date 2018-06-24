@@ -12,10 +12,8 @@ protected:
 	short left;
 	short top;
 	COORD cord;
-	
-	//Border border;
-	//int borderType;
 	BorderStrategy *bs;
+	COORD currentPosition;
 
 private:
 	static Control* focusObj;
@@ -36,6 +34,7 @@ public:
 	virtual bool myPureFunction() = 0;
 
 	virtual COORD getCord() { return cord; }
+	virtual COORD getCurrentPosition() { return currentPosition; }
 
 	~Control();
 };

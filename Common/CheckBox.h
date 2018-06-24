@@ -11,6 +11,7 @@ private:
 	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
 	bool IsChecked;
 	string cbValue;
+	Graphics graphic;
 
 public:
 	CheckBox(short, short, string);
@@ -23,6 +24,8 @@ public:
 	bool canGetFocus();
 	void mousePressed(int x, int y, bool isLeft, Graphics &g);
 	void keyDown(int keyCode, char charecter, Graphics &g);
+
+	void setBackGround(Color color);
 
 
 };

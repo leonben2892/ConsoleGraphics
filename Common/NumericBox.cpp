@@ -45,12 +45,6 @@ void NumericBox::mousePressed(int x, int y, bool isLeft, Graphics &g)
 		}
 	}
 
-	//else if (g.isInside(x, y, left + this->cord.X, top, left + this->cord.X - 2, top + 2))
-	//{
-	//	if (currValue < maxValue)
-	//		currValue += 1;
-	//}
-
 	else if (x <= this->left + this->cord.X - 1 && x >= this->left + this->cord.X - 4 && y >= this->top + 1 && y <= this->top + 3)
 	{
 		if (currValue < maxValue)

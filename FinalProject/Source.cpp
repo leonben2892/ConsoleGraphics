@@ -60,7 +60,7 @@ int main(int argc, char** argv)
 
 	NumericBox n(1, 3, 40, { 30,3 }, 5);
 	p.Add(&n);
-	
+
 	e.run(p);
 
 }

@@ -7,7 +7,7 @@ Control::Control()
 }
 
 Control::Control(int borderType,short x, short y,COORD cor) 
-	:left(x) , top(y), cord(cor)
+	:left(x), top(y), cord(cor)
 {
 	switch (borderType) {
 	case 0:

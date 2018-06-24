@@ -17,12 +17,13 @@ void EventEngine::run(Control &c)
 		if (redraw)
 		{
 			_graphics.clearScreen();
-			_graphics.setCursorVisibility(true);
+			_graphics.setCursorVisibility(false);
 			for (size_t z = 0; z < 1; ++z)
 			{
 				c.draw(_graphics, c.getLeft(), c.getTop(), z);
 			}	
-			_graphics.moveTo(Control::getFocus()->getLeft() + 1, Control::getFocus()->getTop() + 1);
+			_graphics.moveTo(c.getFocus()->getCurrentPosition().X, c.getFocus()->getCurrentPosition().Y);
+			_graphics.setCursorVisibility(true);
 			redraw = false;
 		}
 
@@ -39,7 +40,10 @@ void EventEngine::run(Control &c)
 				auto code = record.Event.KeyEvent.wVirtualKeyCode;
 				auto chr = record.Event.KeyEvent.uChar.AsciiChar;
 				if (code == VK_TAB)
+				{
 					moveFocus(c, f);
+					_graphics.setCursorVisibility(true);
+				}				
 				else
 					f->keyDown(code, chr,_graphics);
 				redraw = true;

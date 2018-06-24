@@ -110,3 +110,13 @@ COORD Graphics::getCursorPos()
 	GetConsoleScreenBufferInfo(_console, &info);
 	return info.dwCursorPosition;
 }
+
+void Graphics::setCursorPos(int x, int y)
+{
+	this->currentCursorPosition = { (SHORT)x,(SHORT)y };
+}
+
+COORD Graphics::getCurrentPosition()
+{
+	return this->currentCursorPosition;
+}
