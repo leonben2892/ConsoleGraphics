@@ -123,6 +123,7 @@
     <ClCompile Include="NumericBox.cpp" />
     <ClCompile Include="Panel.cpp" />
     <ClCompile Include="CheckBox.cpp" />
+    <ClCompile Include="RadioBox.cpp" />
     <ClCompile Include="TextBox.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +140,7 @@
     <ClInclude Include="Message_Box.h" />
     <ClInclude Include="NumericBox.h" />
     <ClInclude Include="Panel.h" />
+    <ClInclude Include="RadioBox.h" />
     <ClInclude Include="TextBox.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

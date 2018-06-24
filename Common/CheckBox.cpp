@@ -62,5 +62,5 @@ void CheckBox::setBackGround(Color color)
 {
 	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
 	//SetConsoleTextAttribute(out, color);
-	graphic.setBackground(color);
+	//graphic.setBackground(color);
 }

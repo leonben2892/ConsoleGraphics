@@ -64,6 +64,13 @@ void EventEngine::run(Control &c)
 			break;
 		}
 		default:
+			/* also if we need hover if not so delte it! yarin 23.7.18
+			auto coord = record.Event.MouseEvent.dwMousePosition;
+			auto x = coord.X - c.getLeft();
+			auto y = coord.Y - c.getTop();
+			c.mouseHover(x, y, _graphics);
+			redraw = true;
+			*/
 			break;
 		}
 	}

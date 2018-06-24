@@ -1,3 +1,5 @@
+#ifndef CHECK_BOX_H
+#define CHECK_BOX_H
 #include "../Common/Control.h"
 #include <string>
 #include <Windows.h>
@@ -11,7 +13,6 @@ private:
 	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
 	bool IsChecked;
 	string cbValue;
-	Graphics graphic;
 
 public:
 	CheckBox(short, short, string);
@@ -24,8 +25,11 @@ public:
 	bool canGetFocus();
 	void mousePressed(int x, int y, bool isLeft, Graphics &g);
 	void keyDown(int keyCode, char charecter, Graphics &g);
-
-	void setBackGround(Color color);
-
+	void setBackGround(Color);
 
 };
+
+
+#endif // CHECK_BOX_H
+
+
