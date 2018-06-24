@@ -6,7 +6,7 @@ class ComboBox : public Control {
 private:
 	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
 	vector<Label*> items;
-	int IsMenuOpenFlg;
+	int IsMenuOpenFlg, selectedIndex, keyPressIndex;
 
 public:
 	ComboBox(int, short, short, COORD, string comboOptions[]);
@@ -14,5 +14,6 @@ public:
 	bool myPureFunction() { return true; };
 	bool canGetFocus();
 	void mousePressed(int x, int y, bool isLeft, Graphics &g);
+	void keyDown(int keyCode, char charecter, Graphics & g);
 };
 
