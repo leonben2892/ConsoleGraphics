@@ -1,9 +1,9 @@
 #include "ComboBox.h"
 
-ComboBox::ComboBox(int bord, short x, short y, COORD cor, string comboOptions[]) 
+ComboBox::ComboBox(int bord, short x, short y, COORD cor, vector<string> comboOptions) 
 	: Control::Control(bord,x,y,cor) , IsMenuOpenFlg(0), selectedIndex(0), keyPressIndex(0)
 {
-	for (size_t i = 0; i < comboOptions->size(); i++) {
+	for (size_t i = 0; i < comboOptions.size(); i++) {
 		items.push_back(new Label((short)(x + 1), (short)(y+1+1*i), comboOptions[i]));
 	}
 }

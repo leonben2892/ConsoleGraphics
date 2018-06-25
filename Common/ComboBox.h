@@ -9,7 +9,7 @@ private:
 	int IsMenuOpenFlg, selectedIndex, keyPressIndex;
 
 public:
-	ComboBox(int, short, short, COORD, string comboOptions[]);
+	ComboBox(int, short, short, COORD, vector<string> comboOptions);
 	void draw(Graphics & g, int x, int y, size_t z);
 	bool myPureFunction() { return true; };
 	bool canGetFocus();

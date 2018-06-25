@@ -15,7 +15,7 @@ private:
 	//string checkBoxesValues[];
 
 public:
-	RadioBox(int bordertype, short left, short top, COORD cord, string str[]);
+	RadioBox(int bordertype, short left, short top, COORD cord, vector<string> str);
 	bool addSelectedItem(string item);
 	bool removeSelectedItem(string item);
 	void draw(Graphics & g, int x, int y, size_t z);
@@ -26,7 +26,9 @@ public:
 
 	bool getSelectedBox();//need to send te prees mouse event throw her
 	bool selectBox();//need to send te prees key event throw her
-	void mouseHover(int x, int y, Graphics &g);
+	
+	//void mouseHover(int x, int y, Graphics &g);
+	
 	void mousePressed(int x, int y, bool isLeft, Graphics &g);
 	void keyDown(int keyCode, char charecter, Graphics &g);
 };

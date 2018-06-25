@@ -11,11 +11,9 @@ private:
 	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
 	vector<CheckBox*> allCheckBoxes;
 	int currentIndex;
-	//vector<CheckBox*> selectedCheckBoxes;
-	//string checkBoxesValues[];
 
 public:
-	CheckList(int bordertype,short left, short top, COORD cord, string str[]);
+	CheckList(int bordertype,short left, short top, COORD cord, vector<string> str);
 	bool addSelectedItem(string item);
 	bool removeSelectedItem(string item);
 	void draw(Graphics & g, int x, int y, size_t z);

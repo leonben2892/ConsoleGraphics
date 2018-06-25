@@ -1,9 +1,9 @@
 #include "CheckList.h"
 
-CheckList::CheckList(int bord, short x, short y, COORD cor, string str[]) 
+CheckList::CheckList(int bord, short x, short y, COORD cor, vector<string> str)
 	:Control::Control(bord,x,y,cor) , currentIndex(0)
 {
-	for (short i = 0; i < (short)str->size(); i++) 
+	for (int i = 0; i < str.size() ; i++)
 	{
 		allCheckBoxes.push_back(new CheckBox(x + 2,y + (i *3),str[i]));
 	}
@@ -16,40 +16,80 @@ void CheckList::draw(Graphics & g, int x, int y, size_t z)
 		allCheckBoxes[i]->draw(g, (short)(x + 3) ,(short)(y + 1 + (i * 3)) ,z);
 }
 
-bool CheckList::canGetFocus() { return true; }
+bool CheckList::canGetFocus() 
+{ 
+	/*if (currentIndex < allCheckBoxes.size() - 1)
+	{
+		++currentIndex;
+		Control::setFocus(*allCheckBoxes[currentIndex]);
+	}*/
+
+	return true; 
+}
 
 void CheckList::mousePressed(int x, int y, bool isLeft, Graphics &g)
 {
+	int index = 0;
 	for (auto child : allCheckBoxes)
 	{
-		child->mousePressed(x, y, isLeft, g);			
+		// checking if mouse pressed within Checkbox area
+		if (y >= child->getTop() && y <= child->getTop() + child->getCord().Y)
+		{
+			if (x >= this->getLeft() && x <= this->getLeft() + this->getCord().X + 1)
+			{
+				currentIndex = index;
+			}
+		}
+		index++;
+		child->mousePressed(x, y, isLeft,g);
 	}
 }
 
 void CheckList::keyDown(int keyCode, char charecter, Graphics &g)
 {
-	int index = 0;
-	if (keyCode == 40 || keyCode == 98)		// down arrow or NUM2 key
+	switch (keyCode)
 	{
-		if (currentIndex == allCheckBoxes.size() -1)
-			currentIndex = 0;
-		else
-			++currentIndex;
-		//Control::setFocus(*this->allCheckBoxes[currentIndex]);
-		allCheckBoxes[currentIndex]->setBackGround(Color::Blue);
-	}
+		case 40:	//down arrow 
+			if (currentIndex == allCheckBoxes.size() - 1)
+				currentIndex = 0;
+			else
+				++currentIndex;
+			//Control::setFocus(*this->allCheckBoxes[currentIndex]);
+			allCheckBoxes[currentIndex]->setBackGround(Color::Blue);
+			break;
 
-	else if (keyCode == 38 || keyCode == 104)   // up arrow or NUM8 key
-	{	
-		if (currentIndex == 0)
-			currentIndex = allCheckBoxes.size() -1;
-		else
-			--currentIndex;
-		//Control::setFocus(*this->allCheckBoxes[currentIndex]);
+		case 98:	//NUM2 key
+			if (currentIndex == allCheckBoxes.size() - 1)
+				currentIndex = 0;
+			else
+				++currentIndex;
+			//Control::setFocus(*this->allCheckBoxes[currentIndex]);
+			allCheckBoxes[currentIndex]->setBackGround(Color::Blue);
+			break;
+
+		case 38:	// up arrow key
+			if (currentIndex == 0)
+				currentIndex = allCheckBoxes.size() - 1;
+			else
+				--currentIndex;
+			break;
+
+		case 104:	// NUM8 key
+			if (currentIndex == 0)
+				currentIndex = allCheckBoxes.size() - 1;
+			else
+				--currentIndex;
+			break;
+
+		case 32:	// Space key
+			allCheckBoxes[currentIndex]->keyDown(keyCode, charecter, g);
+			break;
+		case 13:	// Enter key
+			allCheckBoxes[currentIndex]->keyDown(keyCode, charecter, g);
+			break;
+		default:
+			break;
 	}
-		
-	else if (keyCode == 32 || keyCode == 13)	// Space or Enter key
-		allCheckBoxes[currentIndex]->keyDown(keyCode, charecter, g);
 }
 
 

@@ -1,9 +1,10 @@
 #include "RadioBox.h"
 
-RadioBox::RadioBox(int bord, short x, short y, COORD cor, string str[])
+RadioBox::RadioBox(int bord, short x, short y, COORD cor, vector<string> str)
 	:Control::Control(bord, x, y, cor), currentIndex(0)
 {
-	for (short i = 0; i < (short)str->size(); i++) {
+	for (int i = 0; i < str.size(); i++) 
+	{
 		allCheckBoxes.push_back(new CheckBox(x + 2, y + (i * 3), str[i]));
 	}
 }
@@ -26,14 +27,8 @@ bool RadioBox::selectBox() {
 };
 
 
-
-
-
 void RadioBox::mousePressed(int x, int y, bool isLeft, Graphics &g)
 {
-
-
-
 	int checkBoxIndex = 0;
 	for (auto child : allCheckBoxes)
 	{
@@ -45,7 +40,6 @@ void RadioBox::mousePressed(int x, int y, bool isLeft, Graphics &g)
 				currentIndex = checkBoxIndex;
 			}
 		}
-
 		checkBoxIndex++;
 		child->setIsChecked(false);//her is false because we change the new all,but the current coord get change to true
 		child->mousePressed(x, y, isLeft, g);
@@ -54,52 +48,74 @@ void RadioBox::mousePressed(int x, int y, bool isLeft, Graphics &g)
 
 void RadioBox::keyDown(int keyCode, char charecter, Graphics &g)
 {
-	int index = 0;
-	if (keyCode == 40 || keyCode == 98)		// down arrow or NUM2 key
+	switch (keyCode)
 	{
+	case 40:	//down arrow 
 		if (currentIndex == allCheckBoxes.size() - 1)
 			currentIndex = 0;
 		else
 			++currentIndex;
 		//Control::setFocus(*this->allCheckBoxes[currentIndex]);
 		//allCheckBoxes[currentIndex]->setBackGround(Color::Blue);
-	}
+		break;
 
-	else if (keyCode == 38 || keyCode == 104)   // up arrow or NUM8 key
-	{
+	case 98:	//NUM2 key
+		if (currentIndex == allCheckBoxes.size() - 1)
+			currentIndex = 0;
+		else
+			++currentIndex;
+		//Control::setFocus(*this->allCheckBoxes[currentIndex]);
+		//allCheckBoxes[currentIndex]->setBackGround(Color::Blue);
+		break;
+	case 38:	// up arrow key
 		if (currentIndex == 0)
 			currentIndex = allCheckBoxes.size() - 1;
 		else
 			--currentIndex;
 		//Control::setFocus(*this->allCheckBoxes[currentIndex]);
-	}
+		break;
 
-	else if (keyCode == 32 || keyCode == 13) {	// Space or Enter key
+	case 104:	// NUM8 key
+		if (currentIndex == 0)
+			currentIndex = allCheckBoxes.size() - 1;
+		else
+			--currentIndex;
+		//Control::setFocus(*this->allCheckBoxes[currentIndex]);
+		break;
+
+	case 32:	// Space key
 		for (auto child : allCheckBoxes)
 		{
 			child->setIsChecked(true);//her is true because we change the new current index
 			child->keyDown(keyCode, charecter, g);
 		}
-		
+
 		allCheckBoxes[currentIndex]->keyDown(keyCode, charecter, g);
-		
-
-	}
-
-}
-
-void RadioBox::mouseHover(int x, int y, Graphics &g) {
-
-	// checking if mouse pressed within Checkbox area
-	if (y >= this->top && y <= this->top + this->cord.Y)
-	{
-		if (x >= this->left && x <= this->left + this->cord.X + 1)
+		break;
+	case 13:	// Enter key
+		for (auto child : allCheckBoxes)
 		{
-			//this->colo
+			child->setIsChecked(true);//her is true because we change the new current index
+			child->keyDown(keyCode, charecter, g);
 		}
+
+		allCheckBoxes[currentIndex]->keyDown(keyCode, charecter, g);
+		break;
+
+	default:
+		break;
 	}
-
-
-
-
 };
+
+//void RadioBox::mouseHover(int x, int y, Graphics &g) 
+//{
+//
+//	// checking if mouse pressed within Checkbox area
+//	if (y >= this->top && y <= this->top + this->cord.Y)
+//	{
+//		if (x >= this->left && x <= this->left + this->cord.X + 1)
+//		{
+//			//this->colo
+//		}
+//	}
+//};

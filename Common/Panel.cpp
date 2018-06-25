@@ -54,8 +54,7 @@ void Panel::mousePressed(int x, int y, bool isLeft, Graphics &g)
 			if(child->canGetFocus())
 				setCurrentFocus(index);
 		}		
-		++index;
-				
+		++index;			
 	}
 }
 
