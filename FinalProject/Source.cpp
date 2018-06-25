@@ -62,6 +62,9 @@ int main(int argc, char** argv)
 	ComboBox cb(1, 10, 35, { 10,2 }, { "one","two","three" });
 	p.Add(&cb);
 
+	Message_Box mb(1, 45, 4, { 30,8 }, "This is a message box!!!");
+	p.Add(&mb);
+
 	NumericBox n(1, 30, 40, { 30,3 }, 5);
 	p.Add(&n);
 
