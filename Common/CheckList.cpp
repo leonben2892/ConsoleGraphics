@@ -56,6 +56,7 @@ void CheckList::keyDown(int keyCode, char charecter, Graphics &g)
 				++currentIndex;
 			//Control::setFocus(*this->allCheckBoxes[currentIndex]);
 			allCheckBoxes[currentIndex]->setBackGround(Color::Blue);
+			allCheckBoxes[currentIndex]->draw(g, allCheckBoxes[currentIndex]->getLeft() +1, allCheckBoxes[currentIndex]->getTop() +1, 1);
 			break;
 
 		case 98:	//NUM2 key
@@ -65,6 +66,7 @@ void CheckList::keyDown(int keyCode, char charecter, Graphics &g)
 				++currentIndex;
 			//Control::setFocus(*this->allCheckBoxes[currentIndex]);
 			allCheckBoxes[currentIndex]->setBackGround(Color::Blue);
+			allCheckBoxes[currentIndex]->draw(g, allCheckBoxes[currentIndex]->getLeft(), allCheckBoxes[currentIndex]->getTop(),1);
 			break;
 
 		case 38:	// up arrow key
@@ -121,3 +123,9 @@ bool CheckList::removeSelectedItem(string item)
 	return false;
 }
 
+
+void CheckList::getAllControls(vector<Control*>* controls)
+{
+	vector<Control*> items(allCheckBoxes.begin(), allCheckBoxes.end());
+	*controls = items;
+}

@@ -61,6 +61,6 @@ void CheckBox::keyDown(int keyCode, char charecter, Graphics &g)
 void CheckBox::setBackGround(Color color)
 {
 	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
-	//SetConsoleTextAttribute(out, color);
+	SetConsoleTextAttribute(out, FOREGROUND_BLUE);
 	//graphic.setBackground(color);
 }

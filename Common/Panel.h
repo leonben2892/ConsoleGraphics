@@ -17,7 +17,7 @@ public:
 	bool myPureFunction() { return true; };
 	virtual void Add(Control* control);
 
-	void getAllControls(vector<Control*>* controls);
+	virtual void getAllControls(vector<Control*>* controls);
 
 	void mousePressed(int x, int y, bool isLeft, Graphics &g) ;
 	void keyDown(int keyCode, char charecter, Graphics& g) ;
