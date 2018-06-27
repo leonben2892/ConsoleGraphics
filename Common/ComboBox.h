@@ -7,6 +7,7 @@ private:
 	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
 	vector<Label*> items;
 	int IsMenuOpenFlg, selectedIndex, keyPressIndex;
+	void HoverElement(Graphics &g, bool Up);
 
 public:
 	ComboBox(int, short, short, COORD, vector<string> comboOptions);

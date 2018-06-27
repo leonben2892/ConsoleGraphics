@@ -4,7 +4,7 @@ ComboBox::ComboBox(int bord, short x, short y, COORD cor, vector<string> comboOp
 	: Control::Control(bord,x,y,cor) , IsMenuOpenFlg(0), selectedIndex(0), keyPressIndex(0)
 {
 	for (size_t i = 0; i < comboOptions.size(); i++) {
-		items.push_back(new Label((short)(x + 1), (short)(y+1+1*i), comboOptions[i]));
+		items.push_back(new Label((short)(x + 1), (short)(y + cord.Y + 2 + i), comboOptions[i]));
 	}
 }
 
@@ -15,12 +15,14 @@ void ComboBox::draw(Graphics & g, int x, int y, size_t z)
 	if (IsMenuOpenFlg == 1)
 		bs->drawBorderType(x, (short)(y + cord.Y + 1), {cord.X, (short)(cord.Y + items.size())});
 
-	g.write(x + 1, y + 1, items.at(selectedIndex)->getValue());
+	//g.write(x + 1, y + 1, items.at(selectedIndex)->getValue());
+	items[selectedIndex]->draw(g, x+1, y+1, 0);
 	
 	g.write(x + cord.X + 1 + 1, y + 1, "\x1F");
 	if (IsMenuOpenFlg == 1) {
 		for (short i = 0; i < (short)items.size(); i++) {
-			g.write(x + 1, y + cord.Y + 2 + i, items.at(i)->getValue());
+			//g.write(x + 1, y + cord.Y + 2 + i, items.at(i)->getValue());
+			items[i]->draw(g, x + 1, y + cord.Y + 2 + i, 0);
 		}
 	}
 }
@@ -58,17 +60,68 @@ void ComboBox::keyDown(int keyCode, char charecter, Graphics &g) {
 				keyPressIndex = 0;
 			else
 				keyPressIndex++;
+			HoverElement(g, false);
 		}
 		else if (keyCode == 38 || keyCode == 104) {// up arrow or NUM8 key
 			if (keyPressIndex == 0)
 				keyPressIndex = items.size() - 1;
 			else
 				keyPressIndex--;
-
+			HoverElement(g, true);
 		}
 		else if (keyCode == 32 || keyCode == 13) {// Space or Enter key
 			selectedIndex = keyPressIndex;
 			IsMenuOpenFlg = 0;
 		}
 	}
+}
+
+void ComboBox::HoverElement(Graphics &g, bool Up) {
+
+	if (Up)
+	{
+		if (keyPressIndex == 0)
+		{
+			items[keyPressIndex + 1]->setBackGround(Color::White, Color::Black);
+			items[keyPressIndex + 1]->draw(g, items[keyPressIndex + 1]->getLeft(), items[keyPressIndex + 1]->getTop() , 0);
+		}
+
+		else if (keyPressIndex == items.size() - 1)
+		{
+
+			items[0]->setBackGround(Color::White, Color::Black);
+			items[0]->draw(g, items[0]->getLeft(), items[0]->getTop(), 0);
+		}
+		else
+		{
+			items[keyPressIndex + 1]->setBackGround(Color::White, Color::Black);
+			items[keyPressIndex + 1]->draw(g, items[keyPressIndex + 1]->getLeft(), items[keyPressIndex + 1]->getTop(), 0);
+		}
+	}
+
+	else
+	{
+		if (keyPressIndex == 0)
+		{
+
+			items[items.size() - 1]->setBackGround(Color::White, Color::Black);
+			items[items.size() - 1]->draw(g, items[items.size() - 1]->getLeft(), items[items.size() - 1]->getTop(), 0);
+
+		}
+
+		else if (keyPressIndex == items.size() - 1)
+		{
+			items[keyPressIndex - 1]->setBackGround(Color::White, Color::Black);
+			items[keyPressIndex - 1]->draw(g, items[keyPressIndex - 1]->getLeft(), items[keyPressIndex - 1]->getTop(), 0);
+		}
+		else
+		{
+			items[keyPressIndex - 1]->setBackGround(Color::White, Color::Black);
+			items[keyPressIndex - 1]->draw(g, items[keyPressIndex - 1]->getLeft(), items[keyPressIndex - 1]->getTop(), 0);
+		}
+	}
+
+
+	items[keyPressIndex]->setBackGround(Color::Black, Color::White);
+	items[keyPressIndex]->draw(g, items[keyPressIndex]->getLeft(), items[keyPressIndex]->getTop() , 0);
 }
