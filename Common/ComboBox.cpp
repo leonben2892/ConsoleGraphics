@@ -1,7 +1,7 @@
 #include "ComboBox.h"
 
 ComboBox::ComboBox(int bord, short x, short y, COORD cor, vector<string> comboOptions) 
-	: Control::Control(bord,x,y,cor) , IsMenuOpenFlg(0), selectedIndex(0), keyPressIndex(0)
+	: Control::Control(bord,x,y,cor) , IsMenuOpenFlg(0), selectedIndex(-1), keyPressIndex(-1), intialComboBoxValue("")
 {
 	for (size_t i = 0; i < comboOptions.size(); i++) {
 		items.push_back(new Label((short)(x + 1), (short)(y + cord.Y + 2 + i), comboOptions[i]));
@@ -15,13 +15,14 @@ void ComboBox::draw(Graphics & g, int x, int y, size_t z)
 	if (IsMenuOpenFlg == 1)
 		bs->drawBorderType(x, (short)(y + cord.Y + 1), {cord.X, (short)(cord.Y + items.size())});
 
-	//g.write(x + 1, y + 1, items.at(selectedIndex)->getValue());
-	items[selectedIndex]->draw(g, x+1, y+1, 0);
+	if (selectedIndex == -1)
+		g.write(x+1, y+1, intialComboBoxValue);
+	else
+		items[selectedIndex]->draw(g, x+1, y+1, 0);
 	
 	g.write(x + cord.X + 1 + 1, y + 1, "\x1F");
 	if (IsMenuOpenFlg == 1) {
 		for (short i = 0; i < (short)items.size(); i++) {
-			//g.write(x + 1, y + cord.Y + 2 + i, items.at(i)->getValue());
 			items[i]->draw(g, x + 1, y + cord.Y + 2 + i, 0);
 		}
 	}

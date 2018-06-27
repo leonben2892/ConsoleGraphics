@@ -8,6 +8,7 @@ private:
 	vector<Label*> items;
 	int IsMenuOpenFlg, selectedIndex, keyPressIndex;
 	void HoverElement(Graphics &g, bool Up);
+	string intialComboBoxValue;
 
 public:
 	ComboBox(int, short, short, COORD, vector<string> comboOptions);

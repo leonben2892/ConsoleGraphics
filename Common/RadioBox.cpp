@@ -22,9 +22,35 @@ bool  RadioBox::getSelectedBox() {
 	return 0;
 };
 
-bool RadioBox::selectBox() {
-	return true;
+bool RadioBox::addSelectedItem(string item) {
+	for (auto it = allCheckBoxes.begin(); it != allCheckBoxes.end(); ) {
+		if ((*it)->getCbValue() == item)
+		{
+			(*it)->setIsChecked(true);
+			for (auto it2 = allCheckBoxes.begin(); it2 != allCheckBoxes.end();) {
+				if ((*it2)->getCbValue() != item)
+					(*it2)->setIsChecked(false);
+			}
+			return true;
+		}
+		else
+			++it;
+	}
+	return false;
 };
+
+bool RadioBox::removeSelectedItem(string item) {
+	for (auto it = allCheckBoxes.begin(); it != allCheckBoxes.end(); ) {
+		if ((*it)->getCbValue() == item)
+		{
+			(*it)->setIsChecked(false);
+			return true;
+		}
+		else
+			++it;
+	}
+	return false;
+}
 
 
 void RadioBox::mousePressed(int x, int y, bool isLeft, Graphics &g)
