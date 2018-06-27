@@ -9,6 +9,7 @@ private:
 	int IsMenuOpenFlg, selectedIndex, keyPressIndex;
 	void HoverElement(Graphics &g, bool Up);
 	string intialComboBoxValue;
+	bool Enablefocus;
 
 public:
 	ComboBox(int, short, short, COORD, vector<string> comboOptions);

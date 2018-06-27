@@ -13,7 +13,6 @@ private:
 	int currentIndex;
 	//vector<CheckBox*> selectedCheckBoxes;
 	//string checkBoxesValues[];
-
 	void HoverElement(Graphics &g, bool Up);
 
 public:
@@ -24,6 +23,8 @@ public:
 	bool myPureFunction() { return true; };
 	bool canGetFocus();
 
+	void getAllControls(vector<Control*>* controls);
+	bool setLocalFocus();
 
 
 	bool getSelectedBox();//need to send te prees mouse event throw her

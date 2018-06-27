@@ -12,6 +12,7 @@ EventEngine::EventEngine(DWORD input, DWORD output)
 
 void EventEngine::run(Control &c)
 {
+	vector<Control*> objects;
 	int currentIndex = 0;
 	for (bool redraw = true;;)
 	{
@@ -22,7 +23,7 @@ void EventEngine::run(Control &c)
 			for (size_t z = 0; z < 1; ++z)
 			{
 				c.draw(_graphics, c.getLeft(), c.getTop(), z);
-			}	
+			}
 			_graphics.moveTo(c.getFocus()->getCurrentPosition().X, c.getFocus()->getCurrentPosition().Y);
 			redraw = false;
 		}
@@ -36,38 +37,28 @@ void EventEngine::run(Control &c)
 		{
 			auto f = Control::getFocus();
 
-			if (f->IsCursorVisible())
+			if (f->IsCursorVisible())			// checking if current object needs cursor(TextBox)
 				_graphics.setCursorVisibility(true);
 			else
 				_graphics.setCursorVisibility(false);
-				
+
 
 			if (f != nullptr && record.Event.KeyEvent.bKeyDown)
 			{
 				auto code = record.Event.KeyEvent.wVirtualKeyCode;
 				auto chr = record.Event.KeyEvent.uChar.AsciiChar;
 				if (code == VK_TAB)
-				{	
-					if (f->IsCursorVisible())
+				{
+					if (f->IsCursorVisible())		// checking if current object needs cursor(TextBox)
 						_graphics.setCursorVisibility(true);
 					else
 						_graphics.setCursorVisibility(false);
 
-					f->getAllControls(&items);
-					if (items.size() > 0)
-					{
-						moveFocus(*f, items[currentIndex]);
-						//Control::setFocus(*f);
-					}				
-					else
-					{
-						moveFocus(c, f);
-						currentIndex++;
-					}						
-					//_graphics.setCursorVisibility(true);
-				}				
+					moveFocus(c, f);
+					currentIndex++;
+				}
 				else
-					f->keyDown(code, chr,_graphics);
+					f->keyDown(code, chr, _graphics);
 				if (code == 38 || code == 104 || code == 98 || code == 40)
 					redraw = false;
 				else
@@ -75,7 +66,7 @@ void EventEngine::run(Control &c)
 					_graphics.setBackground(Color::Black);
 					redraw = true;
 				}
-					
+
 			}
 			break;
 		}
@@ -108,14 +99,20 @@ void EventEngine::moveFocus(Control &main, Control *focused)
 	vector<Control*> controls;
 	vector<Control*> items;
 	focused->getAllControls(&items);
-	if (items.size() > 0)
+	if (items.size() > 0)		// check if current focused Item has childs
 	{
-		auto it = find(items.begin(), items.end(), items.front());
-		do
-			if (++it == items.end())
-				it = items.begin();
-		while (!(*it)->canGetFocus());
-		Control::setFocus(**it);
+		if (focused->setLocalFocus())	// check if the focus is on the last child - if not move to the next child
+			Control::setFocus(*focused);	// the focus is still the same Father Item
+		else
+		{	// moving to the next Item in the Panel
+			main.getAllControls(&controls);
+			auto it = find(controls.begin(), controls.end(), focused);
+			do
+				if (++it == controls.end())
+					it = controls.begin();
+			while (!(*it)->canGetFocus());
+			Control::setFocus(**it);
+		}
 	}
 
 	else
@@ -128,5 +125,4 @@ void EventEngine::moveFocus(Control &main, Control *focused)
 		while (!(*it)->canGetFocus());
 		Control::setFocus(**it);
 	}
-		
 }

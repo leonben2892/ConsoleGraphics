@@ -187,3 +187,15 @@ void CheckList::HoverElement(Graphics &g, bool Up)
 	allCheckBoxes[currentIndex]->setBackGround(Color::Black, Color::White);
 	allCheckBoxes[currentIndex]->draw(g, allCheckBoxes[currentIndex]->getLeft() +1, allCheckBoxes[currentIndex]->getTop() +1, 1);
 }
+
+bool CheckList::setLocalFocus()
+{
+	if (currentIndex == allCheckBoxes.size() - 1)
+	{
+		currentIndex = 0;
+		return false;
+	}
+
+	++currentIndex;
+	return true;
+}

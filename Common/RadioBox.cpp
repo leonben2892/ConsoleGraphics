@@ -141,18 +141,23 @@ void RadioBox::keyDown(int keyCode, char charecter, Graphics &g)
 	}
 };
 
-//void RadioBox::mouseHover(int x, int y, Graphics &g) 
-//{
-//
-//	// checking if mouse pressed within Checkbox area
-//	if (y >= this->top && y <= this->top + this->cord.Y)
-//	{
-//		if (x >= this->left && x <= this->left + this->cord.X + 1)
-//		{
-//			//this->colo
-//		}
-//	}
-//};
+bool RadioBox::setLocalFocus()
+{
+	if (currentIndex == allCheckBoxes.size() - 1)
+	{
+		currentIndex = 0;
+		return false;
+	}
+
+	++currentIndex;
+	return true;
+}
+
+void RadioBox::getAllControls(vector<Control*>* controls)
+{
+	vector<Control*> items(allCheckBoxes.begin(), allCheckBoxes.end());
+	*controls = items;
+}
 
 
 void RadioBox::HoverElement(Graphics &g, bool Up)

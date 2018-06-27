@@ -41,6 +41,7 @@ public:
 	virtual COORD getCord() { return cord; }
 	virtual COORD getCurrentPosition() { return currentPosition; }
 	virtual bool IsCursorVisible() { return false; };
+	virtual bool setLocalFocus() { return false; };
 
 	~Control();
 };

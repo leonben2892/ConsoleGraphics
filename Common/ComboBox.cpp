@@ -28,12 +28,14 @@ void ComboBox::draw(Graphics & g, int x, int y, size_t z)
 	}
 }
 
-bool ComboBox::canGetFocus() { return true; }
+bool ComboBox::canGetFocus() { return Enablefocus; }
 
 void ComboBox::mousePressed(int x, int y, bool isLeft, Graphics &g)
 {
 	//Check if arrow to open the items menu is pressed
-	if (x >= (left + cord.X + 1) && x <= (left + cord.X + 1) + 2 && y >= top && y <= top + cord.Y) {
+	if (x >= (left + cord.X + 1) && x <= (left + cord.X + 1) + 2 && y >= top && y <= top + cord.Y) 
+	{
+		this->Enablefocus = true;
 		if (IsMenuOpenFlg == 0) {
 			IsMenuOpenFlg = 1;
 			return;
