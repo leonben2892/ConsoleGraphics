@@ -53,8 +53,7 @@ void EventEngine::run(Control &c)
 					{
 						moveFocus(c, f);
 						currentIndex++;
-					}
-						
+					}						
 					_graphics.setCursorVisibility(true);
 				}				
 				else
@@ -62,7 +61,11 @@ void EventEngine::run(Control &c)
 				if (code == 38 || code == 104 || code == 98 || code == 40)
 					redraw = false;
 				else
+				{
+					_graphics.setBackground(Color::Black);
 					redraw = true;
+				}
+					
 			}
 			break;
 		}

@@ -25,7 +25,7 @@ public:
 	bool canGetFocus();
 	void mousePressed(int x, int y, bool isLeft, Graphics &g);
 	void keyDown(int keyCode, char charecter, Graphics &g);
-	void setBackGround(Color);
+	void setBackGround(Color FGcolor, Color BGcolor);
 
 };
 

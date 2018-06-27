@@ -58,9 +58,33 @@ void CheckBox::keyDown(int keyCode, char charecter, Graphics &g)
 
 }
 
-void CheckBox::setBackGround(Color color)
+void CheckBox::setBackGround(Color FGcolor, Color BGcolor )
 {
 	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(out, FOREGROUND_BLUE);
+	DWORD attributes = 0;
+	switch (FGcolor)
+	{
+	case Color::Black:	break;
+	case Color::Blue:	attributes |= FOREGROUND_BLUE; break;
+	case Color::Green:	attributes |= FOREGROUND_GREEN; break;
+	case Color::Red:	attributes |= FOREGROUND_RED; break;
+	case Color::Cyan:	attributes |= FOREGROUND_BLUE | FOREGROUND_GREEN; break;
+	case Color::Purple:	attributes |= FOREGROUND_BLUE | FOREGROUND_RED; break;
+	case Color::Orange: attributes |= FOREGROUND_GREEN | FOREGROUND_RED; break;
+	case Color::White:	attributes |= FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED; break;
+	}
+
+	switch (BGcolor)
+	{
+	case Color::Black:	break;
+	case Color::Blue:	attributes |= BACKGROUND_BLUE; break;
+	case Color::Green:	attributes |= BACKGROUND_GREEN; break;
+	case Color::Red:	attributes |= BACKGROUND_RED; break;
+	case Color::Cyan:	attributes |= BACKGROUND_BLUE | BACKGROUND_GREEN; break;
+	case Color::Purple:	attributes |= BACKGROUND_BLUE | BACKGROUND_RED; break;
+	case Color::Orange: attributes |= BACKGROUND_GREEN | BACKGROUND_RED; break;
+	case Color::White:	attributes |= BACKGROUND_BLUE | BACKGROUND_GREEN | BACKGROUND_RED; break;
+	}
+	SetConsoleTextAttribute(out, attributes);
 	//graphic.setBackground(color);
 }

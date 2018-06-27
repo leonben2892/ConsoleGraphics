@@ -12,6 +12,8 @@ private:
 	vector<CheckBox*> allCheckBoxes;
 	int currentIndex;
 
+	void HoverElement(Graphics &g, bool Up);
+
 public:
 	CheckList(int bordertype,short left, short top, COORD cord, vector<string> str);
 	bool addSelectedItem(string item);
@@ -24,5 +26,6 @@ public:
 	void keyDown(int keyCode, char charecter, Graphics &g);
 
 	void getAllControls(vector<Control*>* controls);
+
 
 };

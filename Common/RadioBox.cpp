@@ -57,6 +57,8 @@ void RadioBox::keyDown(int keyCode, char charecter, Graphics &g)
 			++currentIndex;
 		//Control::setFocus(*this->allCheckBoxes[currentIndex]);
 		//allCheckBoxes[currentIndex]->setBackGround(Color::Blue);
+
+		HoverElement(g, false);
 		break;
 
 	case 98:	//NUM2 key
@@ -66,6 +68,8 @@ void RadioBox::keyDown(int keyCode, char charecter, Graphics &g)
 			++currentIndex;
 		//Control::setFocus(*this->allCheckBoxes[currentIndex]);
 		//allCheckBoxes[currentIndex]->setBackGround(Color::Blue);
+
+		HoverElement(g, false);
 		break;
 	case 38:	// up arrow key
 		if (currentIndex == 0)
@@ -73,6 +77,8 @@ void RadioBox::keyDown(int keyCode, char charecter, Graphics &g)
 		else
 			--currentIndex;
 		//Control::setFocus(*this->allCheckBoxes[currentIndex]);
+
+		HoverElement(g, true);
 		break;
 
 	case 104:	// NUM8 key
@@ -81,6 +87,8 @@ void RadioBox::keyDown(int keyCode, char charecter, Graphics &g)
 		else
 			--currentIndex;
 		//Control::setFocus(*this->allCheckBoxes[currentIndex]);
+
+		HoverElement(g, true);
 		break;
 
 	case 32:	// Space key
@@ -119,3 +127,54 @@ void RadioBox::keyDown(int keyCode, char charecter, Graphics &g)
 //		}
 //	}
 //};
+
+
+void RadioBox::HoverElement(Graphics &g, bool Up)
+{
+	if (Up)
+	{
+		if (currentIndex == 0)
+		{
+			allCheckBoxes[currentIndex + 1]->setBackGround(Color::White, Color::Black);
+			allCheckBoxes[currentIndex + 1]->draw(g, allCheckBoxes[currentIndex + 1]->getLeft() + 1, allCheckBoxes[currentIndex + 1]->getTop() + 1, 1);
+		}
+
+		else if (currentIndex == allCheckBoxes.size() - 1)
+		{
+
+			allCheckBoxes[0]->setBackGround(Color::White, Color::Black);
+			allCheckBoxes[0]->draw(g, allCheckBoxes[0]->getLeft() + 1, allCheckBoxes[0]->getTop() + 1, 1);
+		}
+		else
+		{
+			allCheckBoxes[currentIndex + 1]->setBackGround(Color::White, Color::Black);
+			allCheckBoxes[currentIndex + 1]->draw(g, allCheckBoxes[currentIndex + 1]->getLeft() + 1, allCheckBoxes[currentIndex + 1]->getTop() + 1, 1);
+		}
+	}
+
+	else
+	{
+		if (currentIndex == 0)
+		{
+
+			allCheckBoxes[allCheckBoxes.size() - 1]->setBackGround(Color::White, Color::Black);
+			allCheckBoxes[allCheckBoxes.size() - 1]->draw(g, allCheckBoxes[allCheckBoxes.size() - 1]->getLeft() + 1, allCheckBoxes[allCheckBoxes.size() - 1]->getTop() + 1, 1);
+
+		}
+
+		else if (currentIndex == allCheckBoxes.size() - 1)
+		{
+			allCheckBoxes[currentIndex - 1]->setBackGround(Color::White, Color::Black);
+			allCheckBoxes[currentIndex - 1]->draw(g, allCheckBoxes[currentIndex - 1]->getLeft() + 1, allCheckBoxes[currentIndex - 1]->getTop() + 1, 1);
+		}
+		else
+		{
+			allCheckBoxes[currentIndex - 1]->setBackGround(Color::White, Color::Black);
+			allCheckBoxes[currentIndex - 1]->draw(g, allCheckBoxes[currentIndex - 1]->getLeft() + 1, allCheckBoxes[currentIndex - 1]->getTop() + 1, 1);
+		}
+	}
+
+
+	allCheckBoxes[currentIndex]->setBackGround(Color::Black, Color::White);
+	allCheckBoxes[currentIndex]->draw(g, allCheckBoxes[currentIndex]->getLeft() + 1, allCheckBoxes[currentIndex]->getTop() + 1, 1);
+}

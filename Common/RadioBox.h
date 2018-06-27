@@ -14,6 +14,8 @@ private:
 	//vector<CheckBox*> selectedCheckBoxes;
 	//string checkBoxesValues[];
 
+	void HoverElement(Graphics &g, bool Up);
+
 public:
 	RadioBox(int bordertype, short left, short top, COORD cord, vector<string> str);
 	bool addSelectedItem(string item);
