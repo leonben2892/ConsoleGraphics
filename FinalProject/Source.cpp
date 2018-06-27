@@ -47,17 +47,18 @@ int main(int argc, char** argv)
 
 	EventEngine e;
 
-	TextBox t(1, 40, 20, { 30,5 });
-	p.Add(&t);
-
-	CheckList cc(1, (short)4, (short)4, { 30,14 },{"one","two","three" });
-	p.Add(&cc);
-
-	RadioBox rc(1, (short)4, (short)20, { 30,14 }, { "optionOne","optionTwo","optionThree" });
-	p.Add(&rc);
 
 	Button btn(1, 40, 35, { 8,2 }, "Button");
 	p.Add(&btn);
+
+	TextBox t(1, 40, 20, { 30,5 });
+	p.Add(&t);
+	
+	CheckList cc(1, (short)4, (short)4, { 30,14 }, { "one","two","three" });
+	p.Add(&cc);
+	
+	RadioBox rc(1, (short)4, (short)20, { 30,14 }, { "optionOne","optionTwo","optionThree" });
+	p.Add(&rc);
 
 	ComboBox cb(1, 10, 35, { 10,2 }, { "one","two","three" });
 	p.Add(&cb);

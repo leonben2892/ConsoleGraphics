@@ -35,11 +35,12 @@ public:
 	virtual short getLeft() { return left; };
 	virtual short getTop() { return top; };
 	virtual void getAllControls(vector<Control*>* controls) {};
-	virtual bool canGetFocus() { return FALSE; };
+	virtual bool canGetFocus() { return false; };
 	virtual bool myPureFunction() = 0;
 
 	virtual COORD getCord() { return cord; }
 	virtual COORD getCurrentPosition() { return currentPosition; }
+	virtual bool IsCursorVisible() { return false; };
 
 	~Control();
 };

@@ -27,7 +27,7 @@ void TextBox::mousePressed(int x, int y, bool isLeft, Graphics &g)
 		int s = left + text.size();
 		if (x > s)		// checking if we click outside the string
 		{			
-			this->currentPosition = { (SHORT)(left + text.size() +1), (SHORT)y };		// moving the cursor to the end of string
+			this->currentPosition = { (SHORT)(left + text.size() +1), (SHORT)y };		// moving the cursor to the end of string			
 			g.moveTo(currentPosition.X, currentPosition.Y);
 			return;
 		}
@@ -98,3 +98,5 @@ void TextBox::keyDown(int keycode, char character, Graphics& g)
 }
 
 COORD TextBox::getCurrentPosition() { return this->currentPosition; }
+
+bool TextBox::IsCursorVisible() { return true; }

@@ -22,4 +22,6 @@ public:
 	void mousePressed(int x, int y, bool isLeft, Graphics &g);
 	void keyDown(int keyCode, char charecter, Graphics& g);
 	COORD getCurrentPosition();
+
+	bool IsCursorVisible();
 };

@@ -1,6 +1,21 @@
-﻿  RadioBox.cpp
-c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\radiobox.cpp(6): warning C4018: '<': signed/unsigned mismatch
+﻿  TextBox.cpp
+  EventEngine.cpp
+  Control.cpp
   CheckList.cpp
 c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\checklist.cpp(6): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  RadioBox.cpp
+c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\radiobox.cpp(6): warning C4018: '<': signed/unsigned mismatch
+  Panel.cpp
+  NumericBox.cpp
+  Message_Box.cpp
+c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\message_box.cpp(36): warning C4018: '>=': signed/unsigned mismatch
+c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\message_box.cpp(36): warning C4018: '<=': signed/unsigned mismatch
+  ComboBox.cpp
+  CheckBox.cpp
+c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\checkbox.cpp(88): warning C4244: 'argument': conversion from 'DWORD' to 'WORD', possible loss of data
+  Button.cpp
+  Label.cpp
   Generating Code...
   Common.vcxproj -> C:\Users\hananavr\Documents\לימודים\שיטות בהנדסת תוכנה\FinalProject_new\software_engineer_finalProject\Debug\Common.lib

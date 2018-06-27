@@ -70,7 +70,6 @@ void Panel::keyDown(int keyCode, char charecter, Graphics &g)
 short Panel::getLeft() { return left; }
 short Panel::getTop() { return top; }
 
-
 void Panel::getAllControls(vector<Control*>* controls)
 {
 	*controls = items;

@@ -24,7 +24,6 @@ void EventEngine::run(Control &c)
 				c.draw(_graphics, c.getLeft(), c.getTop(), z);
 			}	
 			_graphics.moveTo(c.getFocus()->getCurrentPosition().X, c.getFocus()->getCurrentPosition().Y);
-			_graphics.setCursorVisibility(true);
 			redraw = false;
 		}
 		vector<Control*> items;
@@ -36,13 +35,24 @@ void EventEngine::run(Control &c)
 		case KEY_EVENT:
 		{
 			auto f = Control::getFocus();
+
+			if (f->IsCursorVisible())
+				_graphics.setCursorVisibility(true);
+			else
+				_graphics.setCursorVisibility(false);
+				
+
 			if (f != nullptr && record.Event.KeyEvent.bKeyDown)
 			{
 				auto code = record.Event.KeyEvent.wVirtualKeyCode;
 				auto chr = record.Event.KeyEvent.uChar.AsciiChar;
 				if (code == VK_TAB)
-				{
-					
+				{	
+					if (f->IsCursorVisible())
+						_graphics.setCursorVisibility(true);
+					else
+						_graphics.setCursorVisibility(false);
+
 					f->getAllControls(&items);
 					if (items.size() > 0)
 					{
@@ -54,7 +64,7 @@ void EventEngine::run(Control &c)
 						moveFocus(c, f);
 						currentIndex++;
 					}						
-					_graphics.setCursorVisibility(true);
+					//_graphics.setCursorVisibility(true);
 				}				
 				else
 					f->keyDown(code, chr,_graphics);
