@@ -35,7 +35,7 @@ void EventEngine::run(Control &c)
 		{
 		case KEY_EVENT:
 		{
-			auto f = Control::getFocus();
+			auto f = Control::getFocus();	//get the current focused object
 
 			if (f->IsCursorVisible())			// checking if current object needs cursor(TextBox)
 				_graphics.setCursorVisibility(true);
@@ -54,7 +54,7 @@ void EventEngine::run(Control &c)
 					else
 						_graphics.setCursorVisibility(false);
 
-					moveFocus(c, f);
+					moveFocus(c, f);	//move focus to the next object
 					currentIndex++;
 				}
 				else
@@ -118,7 +118,7 @@ void EventEngine::moveFocus(Control &main, Control *focused)
 	}
 
 	else
-	{
+	{	
 		main.getAllControls(&controls);
 		auto it = find(controls.begin(), controls.end(), focused);
 		do
