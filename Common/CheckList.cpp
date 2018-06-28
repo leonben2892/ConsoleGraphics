@@ -18,12 +18,6 @@ void CheckList::draw(Graphics & g, int x, int y, size_t z)
 
 bool CheckList::canGetFocus() 
 { 
-	/*if (currentIndex < allCheckBoxes.size() - 1)
-	{
-		++currentIndex;
-		Control::setFocus(*allCheckBoxes[currentIndex]);
-	}*/
-
 	return true; 
 }
 
