@@ -193,3 +193,16 @@ bool CheckList::setLocalFocus()
 	++currentIndex;
 	return true;
 }
+
+vector<string> CheckList::getSelectedCheckboxes() {
+	vector<string> tmpSelectedCheckBoxes;
+	for (auto it = allCheckBoxes.begin(); it != allCheckBoxes.end(); ) {
+		if ((*it)->getIsChecked())
+		{
+			tmpSelectedCheckBoxes.push_back((*it)->getCbValue());
+		}
+		else
+			++it;
+	}
+	return tmpSelectedCheckBoxes;
+}

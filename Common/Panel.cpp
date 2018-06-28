@@ -22,6 +22,8 @@ void Panel::draw(Graphics& g, int x, int y, size_t z)
 
 	for (auto child : items)
 	{
+		child->setLeft(this->left + child->getLeft());
+		child->setTop(this->top + child->getTop());
 		child->draw(g, child->getLeft(), child->getTop(), z);
 	}
 	//g.moveTo(items[currentFocus]->getLeft()+1 , items[currentFocus]->getTop() +1);

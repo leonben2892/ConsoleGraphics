@@ -7,6 +7,15 @@ NumericBox::NumericBox(int bord, short x, short y, COORD cor, int currVal)
 		cord.Y = 4;
 }
 
+bool NumericBox::setCurrentValue(int currValue) {
+	if (currValue < minValue || currValue > maxValue)
+		return false;
+	else {
+		this->currValue = currValue;
+		return true;
+	}
+}
+
 void NumericBox::draw(Graphics &g, int x, int y, size_t z) {
 	COORD c;
 	c.X = x;

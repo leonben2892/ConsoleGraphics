@@ -19,6 +19,8 @@ public:
 	int getMinValue() { return minValue; };
 	void setMaxValue(int maxNum) { this->maxValue = maxNum; };
 	int getMaxValue() { return this->maxValue; };
+	bool setCurrentValue(int currValue);
+	int getCurrentValue() { return this->currValue; };
 	void draw(Graphics & g, int x, int y, size_t z);
 	bool canGetFocus();
 	bool myPureFunction() { return true; };

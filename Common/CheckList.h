@@ -18,6 +18,7 @@ public:
 	CheckList(int bordertype,short left, short top, COORD cord, vector<string> str);
 	bool addSelectedItem(string item);
 	bool removeSelectedItem(string item);
+	vector<string> getSelectedCheckboxes();
 	void draw(Graphics & g, int x, int y, size_t z);
 	bool myPureFunction() { return true; };
 	bool canGetFocus();
