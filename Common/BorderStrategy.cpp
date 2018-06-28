@@ -44,12 +44,8 @@ void BorderStrategy::draw(char topLeft, char hrLine, char topRight, char vrLine,
 		cout << vrLine;
 		++v;
 	}
-	//SetConsoleCursorPosition(out, { c.X, c.Y + 1 });
-	//setCursorPosit({ this->position.X, this->position.Y + 1 }, out, info);
 
-	//cout << vrLine;
 	SetConsoleCursorPosition(out, { c.X, c.Y + cord.Y });
-	//setCursorPosit({ this->position.X, this->position.Y + 2 }, out, info);
 
 	for (int i = 0; i < cord.X; ++i)
 	{
@@ -60,7 +56,4 @@ void BorderStrategy::draw(char topLeft, char hrLine, char topRight, char vrLine,
 	}
 
 	cout << bottomRight;
-	//SetConsoleCursorPosition(out, { c.X + ((SHORT)cord.X - c.X), c.Y + 1 });
-	//setCursorPosit({ this->position.X + (SHORT)this->size, this->position.Y + 1 }, out, info);
-	//cout << vrLine;
 }

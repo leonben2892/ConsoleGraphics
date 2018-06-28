@@ -81,8 +81,6 @@ void RadioBox::keyDown(int keyCode, char charecter, Graphics &g)
 			currentIndex = 0;
 		else
 			++currentIndex;
-		//Control::setFocus(*this->allCheckBoxes[currentIndex]);
-		//allCheckBoxes[currentIndex]->setBackGround(Color::Blue);
 
 		HoverElement(g, false);
 		break;
@@ -92,8 +90,6 @@ void RadioBox::keyDown(int keyCode, char charecter, Graphics &g)
 			currentIndex = 0;
 		else
 			++currentIndex;
-		//Control::setFocus(*this->allCheckBoxes[currentIndex]);
-		//allCheckBoxes[currentIndex]->setBackGround(Color::Blue);
 
 		HoverElement(g, false);
 		break;
@@ -102,7 +98,6 @@ void RadioBox::keyDown(int keyCode, char charecter, Graphics &g)
 			currentIndex = allCheckBoxes.size() - 1;
 		else
 			--currentIndex;
-		//Control::setFocus(*this->allCheckBoxes[currentIndex]);
 
 		HoverElement(g, true);
 		break;
@@ -112,7 +107,6 @@ void RadioBox::keyDown(int keyCode, char charecter, Graphics &g)
 			currentIndex = allCheckBoxes.size() - 1;
 		else
 			--currentIndex;
-		//Control::setFocus(*this->allCheckBoxes[currentIndex]);
 
 		HoverElement(g, true);
 		break;

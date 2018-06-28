@@ -49,7 +49,6 @@ void TextBox::keyDown(int keycode, char character, Graphics& g)
 			case 8:		// backspace
 				if (g.getCursorPos().X - 1 == this->left)    // if we trying to delete char but we in text border position
 					return;
-				//this->text.pop_back();
 				text.erase(currentPosition.X - 2 - startstring,1);
 				this->currentPosition = { (SHORT)(currentPosition.X - 1),(SHORT)currentPosition.Y };
 				break;
@@ -57,7 +56,6 @@ void TextBox::keyDown(int keycode, char character, Graphics& g)
 			case 46:	// del key
 				if (g.getCursorPos().X - 1 == this->left)    // if we trying to delete char but we in text border position
 					return;
-				//this->text.pop_back();
 				text.erase(currentPosition.X - 1 - startstring,1);
 				this->currentPosition = { (SHORT)(currentPosition.X - 1),(SHORT)currentPosition.Y };
 				break;

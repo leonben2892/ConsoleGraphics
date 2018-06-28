@@ -23,7 +23,6 @@ void Panel::draw(Graphics& g, int x, int y, size_t z)
 	{
 		child->draw(g, child->getLeft(), child->getTop(), z);
 	}
-	//g.moveTo(items[currentFocus]->getLeft()+1 , items[currentFocus]->getTop() +1);
 }
 
 void Panel::Add(Control* control) 

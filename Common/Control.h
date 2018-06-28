@@ -1,6 +1,5 @@
 #pragma once
 #include "Graphics.h"
-#include "Border.h"
 #include "BorderStrategy.h"
 #include <vector>
 
@@ -14,11 +13,6 @@ protected:
 	COORD cord;
 	BorderStrategy *bs;
 	COORD currentPosition;
-	//Graphics graphics;should be i think yarin 23.8.18
-	//Color fontColor;
-	//Color backGroundColor;
-	//Border border;
-	//int borderType;
 
 private:
 	static Control* focusObj;

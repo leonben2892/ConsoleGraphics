@@ -86,7 +86,6 @@ void CheckBox::setBackGround(Color FGcolor, Color BGcolor )
 	case Color::White:	attributes |= BACKGROUND_BLUE | BACKGROUND_GREEN | BACKGROUND_RED; break;
 	}
 	SetConsoleTextAttribute(out, attributes);
-	//graphic.setBackground(color);
 }
 
 
