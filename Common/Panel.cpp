@@ -1,7 +1,7 @@
 #include "Panel.h"
 
 Panel::Panel(int bord, short x, short y, COORD cor) 
-	: Control(bord,x,y,cor), currentFocus(0) {}
+	: Control(bord,x,y,cor), currentFocus(0){}
 
 
 void Panel::setCurrentFocus(int x)
@@ -19,11 +19,8 @@ int Panel::getCurrentFocus()
 void Panel::draw(Graphics& g, int x, int y, size_t z)
 {
 	bs->drawBorderType(x, y, cord);
-
 	for (auto child : items)
 	{
-		child->setLeft(this->left + child->getLeft());
-		child->setTop(this->top + child->getTop());
 		child->draw(g, child->getLeft(), child->getTop(), z);
 	}
 	//g.moveTo(items[currentFocus]->getLeft()+1 , items[currentFocus]->getTop() +1);
