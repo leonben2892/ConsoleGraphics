@@ -1,3 +1,6 @@
+#ifndef CHECKLIST_H
+#define CHECKLIST_H
+
 //#include "../Common/Control.h"
 #include "../Common/CheckBox.h"
 //#include <string>
@@ -32,3 +35,5 @@ public:
 
 
 };
+
+#endif //CHECKLIST_H

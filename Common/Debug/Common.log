@@ -1,24 +1,10 @@
-﻿  TextBox.cpp
-  RadioBox.cpp
-c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\radiobox.cpp(6): warning C4018: '<': signed/unsigned mismatch
-  CheckBox.cpp
-c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\checkbox.cpp(88): warning C4244: 'argument': conversion from 'DWORD' to 'WORD', possible loss of data
-  Panel.cpp
-  NumericBox.cpp
-  Message_Box.cpp
-c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\message_box.cpp(36): warning C4018: '>=': signed/unsigned mismatch
-c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\message_box.cpp(36): warning C4018: '<=': signed/unsigned mismatch
-  Graphics.cpp
-c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\graphics.cpp(97): warning C4244: 'argument': conversion from 'DWORD' to 'WORD', possible loss of data
+﻿  Panel.cpp
+c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\panel.cpp(17): warning C4018: '<': signed/unsigned mismatch
+c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\panel.cpp(98): warning C4018: '<': signed/unsigned mismatch
   EventEngine.cpp
-  Control.cpp
-  ComboBox.cpp
-  CheckList.cpp
-c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\checklist.cpp(6): warning C4018: '<': signed/unsigned mismatch
-  Button.cpp
-  BorderStrategy.cpp
-  Border.cpp
-  Label.cpp
-c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\controls\label.cpp(51): warning C4244: 'argument': conversion from 'DWORD' to 'WORD', possible loss of data
+c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\eventengine.cpp(30): warning C4018: '<': signed/unsigned mismatch
+c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\eventengine.cpp(173): warning C4018: '<': signed/unsigned mismatch
+c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\eventengine.cpp(184): warning C4018: '<': signed/unsigned mismatch
+c:\users\hananavr\documents\לימודים\שיטות בהנדסת תוכנה\finalproject_new\software_engineer_finalproject\common\eventengine.cpp(209): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
   Common.vcxproj -> C:\Users\hananavr\Documents\לימודים\שיטות בהנדסת תוכנה\FinalProject_new\software_engineer_finalProject\Debug\Common.lib

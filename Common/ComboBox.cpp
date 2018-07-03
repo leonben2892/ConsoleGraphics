@@ -1,7 +1,7 @@
 #include "ComboBox.h"
 
 ComboBox::ComboBox(int bord, short x, short y, COORD cor, vector<string> comboOptions) 
-	: Control::Control(bord,x,y,cor) , IsMenuOpenFlg(0), selectedIndex(-1), keyPressIndex(-1), intialComboBoxValue("")
+	: Control::Control(bord,x,y,cor) , IsMenuOpenFlg(0), selectedIndex(-1), keyPressIndex(-1), intialComboBoxValue(""), Enablefocus(false)
 {
 	for (size_t i = 0; i < comboOptions.size(); i++) {
 		items.push_back(new Label((short)(x + 1), (short)(y + cord.Y + 2 + i), comboOptions[i]));
@@ -35,18 +35,21 @@ void ComboBox::mousePressed(int x, int y, bool isLeft, Graphics &g)
 	//Check if arrow to open the items menu is pressed
 	if (x >= (left + cord.X + 1) && x <= (left + cord.X + 1) + 2 && y >= top && y <= top + cord.Y) 
 	{
-		this->Enablefocus = true;
-		if (IsMenuOpenFlg == 0) {
+		if (IsMenuOpenFlg == 0) 
+		{
+			this->Enablefocus = true;
 			IsMenuOpenFlg = 1;
 			return;
 		}
-		if (IsMenuOpenFlg == 1) {
+		if (IsMenuOpenFlg == 1) 
+		{
 			IsMenuOpenFlg = 0;
 			return;
 		}
 	}
 	//Check if one of the items in the menu is pressed
-	if (IsMenuOpenFlg == 1) {
+	if (IsMenuOpenFlg == 1) 
+	{
 		for (short i = 0; i < (short)items.size(); i++) {
 				if(x >= (left+1) && x <= (left+cord.X) && y == (top + cord.Y + 2 + i)) {
 					selectedIndex = i;

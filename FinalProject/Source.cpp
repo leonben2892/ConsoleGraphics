@@ -112,7 +112,7 @@ int main(int argc, char** argv)
 
 	/*RadioBox view & Label: "RadioBox"; (In secondery panel)*/
 	Label radioBoxLabel2(92, 29, "RadioBox");
-	p.Add(&radioBoxLabel2);
+	p2.Add(&radioBoxLabel2);
 
 	RadioBox rc2(1, (short)82, (short)30, { 30,10 }, { "seconderyPanelOne","seconderyPanelTwo","seconderyPanelThree" });
 	p2.Add(&rc2);

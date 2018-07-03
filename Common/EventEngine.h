@@ -12,8 +12,9 @@ public:
 	virtual ~EventEngine();
 private:
 	void moveFocus(Control &main, Control *focused);
-
 	Graphics _graphics;
 	HANDLE _console;
 	DWORD _consoleMode;
+	void findAndSetFocusedItemInPanel(vector<Control*> controls,Control *focused);
+	void setFocusInMainPanel(vector<Control*> controls);
 };

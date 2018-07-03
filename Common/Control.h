@@ -36,6 +36,7 @@ public:
 	virtual COORD getCurrentPosition() { return currentPosition; }
 	virtual bool IsCursorVisible() { return false; };
 	virtual bool setLocalFocus() { return false; };
+	virtual Control* getCurrentFocus() { return NULL; };
 
 	~Control();
 };

@@ -77,14 +77,6 @@ void RadioBox::keyDown(int keyCode, char charecter, Graphics &g)
 	switch (keyCode)
 	{
 	case 40:	//down arrow 
-		if (currentIndex == allCheckBoxes.size() - 1)
-			currentIndex = 0;
-		else
-			++currentIndex;
-
-		HoverElement(g, false);
-		break;
-
 	case 98:	//NUM2 key
 		if (currentIndex == allCheckBoxes.size() - 1)
 			currentIndex = 0;
@@ -94,14 +86,6 @@ void RadioBox::keyDown(int keyCode, char charecter, Graphics &g)
 		HoverElement(g, false);
 		break;
 	case 38:	// up arrow key
-		if (currentIndex == 0)
-			currentIndex = allCheckBoxes.size() - 1;
-		else
-			--currentIndex;
-
-		HoverElement(g, true);
-		break;
-
 	case 104:	// NUM8 key
 		if (currentIndex == 0)
 			currentIndex = allCheckBoxes.size() - 1;
@@ -112,14 +96,6 @@ void RadioBox::keyDown(int keyCode, char charecter, Graphics &g)
 		break;
 
 	case 32:	// Space key
-		for (auto child : allCheckBoxes)
-		{
-			child->setIsChecked(true);//her is true because we change the new current index
-			child->keyDown(keyCode, charecter, g);
-		}
-
-		allCheckBoxes[currentIndex]->keyDown(keyCode, charecter, g);
-		break;
 	case 13:	// Enter key
 		for (auto child : allCheckBoxes)
 		{
@@ -144,6 +120,7 @@ bool RadioBox::setLocalFocus()
 	}
 
 	++currentIndex;
+	//Control::setFocus(*this);
 	return true;
 }
 

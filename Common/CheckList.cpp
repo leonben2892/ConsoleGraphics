@@ -44,16 +44,6 @@ void CheckList::keyDown(int keyCode, char charecter, Graphics &g)
 	switch (keyCode)
 	{
 		case 40:	//down arrow 
-			if (currentIndex == allCheckBoxes.size() - 1)
-				currentIndex = 0;
-			else
-				++currentIndex;
-			//Control::setFocus(*this->allCheckBoxes[currentIndex]);
-			
-			HoverElement(g,false);
-			
-			break;
-
 		case 98:	//NUM2 key
 			if (currentIndex == allCheckBoxes.size() - 1)
 				currentIndex = 0;
@@ -61,20 +51,10 @@ void CheckList::keyDown(int keyCode, char charecter, Graphics &g)
 				++currentIndex;
 			//Control::setFocus(*this->allCheckBoxes[currentIndex]);
 
-			HoverElement(g,false);
-
-			
+			HoverElement(g,false);		
 			break;
 
 		case 38:	// up arrow key
-			if (currentIndex == 0)
-				currentIndex = allCheckBoxes.size() - 1;
-			else
-				--currentIndex;
-
-			HoverElement(g,true);
-			break;
-
 		case 104:	// NUM8 key
 			if (currentIndex == 0)
 				currentIndex = allCheckBoxes.size() - 1;
@@ -85,8 +65,6 @@ void CheckList::keyDown(int keyCode, char charecter, Graphics &g)
 			break;
 
 		case 32:	// Space key
-			allCheckBoxes[currentIndex]->keyDown(keyCode, charecter, g);
-			break;
 		case 13:	// Enter key
 			allCheckBoxes[currentIndex]->keyDown(keyCode, charecter, g);
 			break;
@@ -191,8 +169,10 @@ bool CheckList::setLocalFocus()
 	}
 
 	++currentIndex;
+	//Control::setFocus(*this);
 	return true;
 }
+
 
 vector<string> CheckList::getSelectedCheckboxes() {
 	vector<string> tmpSelectedCheckBoxes;

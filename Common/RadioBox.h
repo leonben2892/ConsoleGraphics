@@ -1,8 +1,7 @@
-//#include "../Common/Control.h"
+#ifndef RADIOBOX_H
+#define RADIOBOX_H
+
 #include "../Common/CheckBox.h"
-//#include <string>
-//#include <Windows.h>
-//#include <iostream>
 
 using namespace std;
 
@@ -35,3 +34,5 @@ public:
 	void mousePressed(int x, int y, bool isLeft, Graphics &g);
 	void keyDown(int keyCode, char charecter, Graphics &g);
 };
+
+#endif // !RADIOBOX_H

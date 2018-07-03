@@ -1,7 +1,44 @@
 #include "EventEngine.h"
 #include <vector>
 #include <algorithm>
+#include "RadioBox.h"
+#include "Checklist.h"
+#include "Panel.h"
+
 using namespace std;
+
+
+static bool isList(Control* control)
+{
+	if (dynamic_cast<RadioBox*>(control) != NULL || dynamic_cast<CheckList*>(control) != NULL)
+		return true;
+	return false;
+}
+
+static bool isPanel(Control* control)
+{
+	if (dynamic_cast<Panel*> (control) != NULL)
+		return true;
+	return false;
+}
+
+
+static void setFirstFocus(Control& control)
+{
+	vector <Control*> items;
+	control.getAllControls(&items);
+	for (int i = 0; i < items.size(); ++i)
+	{
+		if (items[i]->canGetFocus())
+		{
+			Control::setFocus(*items[i]);
+			return;
+		}		
+	}
+}
+
+
+
 
 EventEngine::EventEngine(DWORD input, DWORD output)
 	: _console(GetStdHandle(input)), _graphics(output)
@@ -12,8 +49,11 @@ EventEngine::EventEngine(DWORD input, DWORD output)
 
 void EventEngine::run(Control &c)
 {
-	vector<Control*> objects;
 	int currentIndex = 0;
+
+	//set 1st child as focused by default
+	setFirstFocus(c);
+
 	for (bool redraw = true;;)
 	{
 		if (redraw)
@@ -27,7 +67,7 @@ void EventEngine::run(Control &c)
 			_graphics.moveTo(c.getFocus()->getCurrentPosition().X, c.getFocus()->getCurrentPosition().Y);
 			redraw = false;
 		}
-		vector<Control*> items;
+		//vector<Control*> items;
 		INPUT_RECORD record;
 		DWORD count;
 		ReadConsoleInput(_console, &record, 1, &count);
@@ -42,20 +82,26 @@ void EventEngine::run(Control &c)
 			else
 				_graphics.setCursorVisibility(false);
 
-
 			if (f != nullptr && record.Event.KeyEvent.bKeyDown)
 			{
 				auto code = record.Event.KeyEvent.wVirtualKeyCode;
 				auto chr = record.Event.KeyEvent.uChar.AsciiChar;
 				if (code == VK_TAB)
 				{
-					if (f->IsCursorVisible())		// checking if current object needs cursor(TextBox)
-						_graphics.setCursorVisibility(true);
+					if (isList(f))		// check if the item is CheckList or RadioBox
+					{
+						if (f->setLocalFocus()) {		//check if still can navigate inside the list
+							f->keyDown(code, chr, _graphics);
+						}
+						else
+							moveFocus(c, f);	// else- move to next object
+					}				
 					else
-						_graphics.setCursorVisibility(false);
-
-					moveFocus(c, f);	//move focus to the next object
-					currentIndex++;
+					{
+						moveFocus(c, f);	//move focus to the next object
+						currentIndex++;
+					}
+					
 				}
 				else
 					f->keyDown(code, chr, _graphics);
@@ -99,32 +145,75 @@ EventEngine::~EventEngine()
 void EventEngine::moveFocus(Control &main, Control *focused)
 {
 	vector<Control*> controls;
-	vector<Control*> items;
-	focused->getAllControls(&items);
-	if (items.size() > 0)		// check if current focused Item has childs
+	if (isPanel(focused))
 	{
-		if (focused->setLocalFocus())	// check if the focus is on the last child - if not move to the next child
-			Control::setFocus(*focused);	// the focus is still the same Father Item
-		else
-		{	// moving to the next Item in the Panel
-			main.getAllControls(&controls);
-			auto it = find(controls.begin(), controls.end(), focused);
-			do
-				if (++it == controls.end())
-					it = controls.begin();
-			while (!(*it)->canGetFocus());
-			Control::setFocus(**it);
+		if (focused->setLocalFocus())		// check if still can navigate inside the panel
+		{
+			Control::setFocus(*focused->getCurrentFocus());
+			return;
 		}
+
+		moveFocus(*focused, focused->getCurrentFocus());
 	}
 
 	else
-	{	
+	{
 		main.getAllControls(&controls);
-		auto it = find(controls.begin(), controls.end(), focused);
-		do
-			if (++it == controls.end())
-				it = controls.begin();
-		while (!(*it)->canGetFocus());
-		Control::setFocus(**it);
+		findAndSetFocusedItemInPanel(controls, focused);
 	}
+}
+
+/* this function find the current object(even inside panels) and move the focus to the next object*/
+void EventEngine::findAndSetFocusedItemInPanel(vector<Control*> controls,Control *focused)
+{
+	static int embededPanels = 0;
+	vector<Control*> temp;
+	auto it = focused;
+	int index = 0;
+	for (index; index < controls.size(); ++index)	//move over all Controls to find the current focused
+	{
+		if (isPanel(controls[index]))	// if its panel- recursive search
+		{
+			controls[index]->getAllControls(&temp);
+			++embededPanels;
+			findAndSetFocusedItemInPanel(temp, focused);
+		}
+			
+		if (controls[index] == it)		// if we find the current focused
+		{
+			for (int i = index + 1; i < controls.size(); ++i)	// checking what is the next Item to set focus
+			{
+				if (controls[i]->canGetFocus()) 
+				{
+					if (isPanel(controls[i]))	// if the next Item is panel - set the current item inside the panel to be in focus
+					{
+						Control::setFocus(*controls[i]->getCurrentFocus());
+					}
+					else
+						Control::setFocus(*controls[i]);	
+					return;
+				}
+			}
+		}
+	}
+	if (embededPanels == 0)		// if we get to the end of the list - setting the first focuseble item to be in focus
+		setFocusInMainPanel(controls);
+
+	else
+		--embededPanels;
+}
+
+/* this function set the first focuseble Item to be in Focus*/
+void EventEngine::setFocusInMainPanel(vector<Control*> controls)
+{
+	for (int i = 0; i < controls.size(); ++i)
+	{
+		if (controls[i]->canGetFocus())
+		{
+			Control::setFocus(*controls[i]);
+			return;
+		}			
+	}
+
+	Control::setFocus(*controls[0]);
 }
