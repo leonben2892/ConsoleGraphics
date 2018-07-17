@@ -22,7 +22,7 @@ public:
 	bool addSelectedItem(string item);
 	bool removeSelectedItem(string item);
 	vector<string> getSelectedCheckboxes();
-	void draw(Graphics & g, int x, int y, size_t z);
+	void draw(Graphics& g, int x, int y, size_t z);
 	bool myPureFunction() { return true; };
 	bool canGetFocus();
 

@@ -9,7 +9,7 @@ RadioBox::RadioBox(int bord, short x, short y, COORD cor, vector<string> str)
 	}
 }
 
-void RadioBox::draw(Graphics & g, int x, int y, size_t z)
+void RadioBox::draw(Graphics& g, int x, int y, size_t z)
 {
 	g.setBackground(this->background);
 	g.setForeground(this->foreground);
@@ -65,7 +65,9 @@ void RadioBox::mousePressed(int x, int y, bool isLeft, Graphics &g)
 		{
 			if (x >= this->getLeft() && x <= this->getLeft() + this->getCord().X + 1)
 			{
+				this->allCheckBoxes[currentIndex]->setColor(Color::Black, Color::White);
 				currentIndex = checkBoxIndex;
+				this->allCheckBoxes[currentIndex]->setColor(Color::White, Color::Black);
 			}
 		}
 		checkBoxIndex++;
@@ -80,19 +82,19 @@ void RadioBox::keyDown(int keyCode, char charecter, Graphics &g)
 	{
 	case 40:	//down arrow 
 	case 98:	//NUM2 key
-		if (currentIndex == allCheckBoxes.size() - 1)
+		/*if (currentIndex == allCheckBoxes.size() - 1)
 			currentIndex = 0;
 		else
-			++currentIndex;
+			++currentIndex;*/
 
 		HoverElement(g, false);
 		break;
 	case 38:	// up arrow key
 	case 104:	// NUM8 key
-		if (currentIndex == 0)
+		/*if (currentIndex == 0)
 			currentIndex = allCheckBoxes.size() - 1;
 		else
-			--currentIndex;
+			--currentIndex;*/
 
 		HoverElement(g, true);
 		break;
@@ -139,6 +141,39 @@ void RadioBox::HoverElement(Graphics &g, bool Up)
 	{
 		if (currentIndex == 0)
 		{
+			this->allCheckBoxes[currentIndex]->setColor(Color::Black, Color::White);
+			currentIndex = allCheckBoxes.size() - 1;
+			this->allCheckBoxes[currentIndex]->setColor(Color::White, Color::Black);
+		}
+
+		else
+		{
+			this->allCheckBoxes[currentIndex]->setColor(Color::Black, Color::White);
+			--currentIndex;
+			this->allCheckBoxes[currentIndex]->setColor(Color::White, Color::Black);
+		}
+	}
+
+	else
+	{
+		if (currentIndex == allCheckBoxes.size() - 1)
+		{
+			this->allCheckBoxes[currentIndex]->setColor(Color::Black, Color::White);
+			currentIndex = 0;
+			this->allCheckBoxes[currentIndex]->setColor(Color::White, Color::Black);
+		}
+
+		else
+		{
+			this->allCheckBoxes[currentIndex]->setColor(Color::Black, Color::White);
+			++currentIndex;
+			this->allCheckBoxes[currentIndex]->setColor(Color::White, Color::Black);
+		}
+	}
+	/*if (Up)
+	{
+		if (currentIndex == 0)
+		{
 			allCheckBoxes[currentIndex + 1]->setBackGround(Color::White, Color::Black);
 			allCheckBoxes[currentIndex + 1]->draw(g, allCheckBoxes[currentIndex + 1]->getLeft() + 1, allCheckBoxes[currentIndex + 1]->getTop() + 1, 1);
 		}
@@ -180,5 +215,5 @@ void RadioBox::HoverElement(Graphics &g, bool Up)
 
 
 	allCheckBoxes[currentIndex]->setBackGround(Color::Black, Color::White);
-	allCheckBoxes[currentIndex]->draw(g, allCheckBoxes[currentIndex]->getLeft() + 1, allCheckBoxes[currentIndex]->getTop() + 1, 1);
+	allCheckBoxes[currentIndex]->draw(g, allCheckBoxes[currentIndex]->getLeft() + 1, allCheckBoxes[currentIndex]->getTop() + 1, 1);*/
 }

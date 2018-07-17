@@ -11,7 +11,7 @@ string Button::getBtnValue() {
 	return this->btnValue;
 }
 
-void Button::draw(Graphics & g, int x, int y, size_t z) 
+void Button::draw(Graphics& g, int x, int y, size_t z) 
 {
 	g.setBackground(this->background);
 	g.setForeground(this->foreground);

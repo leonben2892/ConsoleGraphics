@@ -40,6 +40,9 @@ void BorderStrategy::draw(char topLeft, char hrLine, char topRight, char vrLine,
 	{
 		SetConsoleCursorPosition(out, { c.X, (SHORT)(c.Y + v) });
 		cout << vrLine;
+
+		/* here we need to draw the background*/
+
 		SetConsoleCursorPosition(out, { c.X + cord.X, (SHORT)(c.Y + v) });
 		cout << vrLine;
 		++v;

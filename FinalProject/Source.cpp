@@ -45,8 +45,6 @@ int main(int argc, char** argv)
 	/*Panel view & Label: "Main Panel"*/
 	Panel p(2, 0, 0, { 130,45 });
 
-	p.setColor(Color::Orange, Color::Red);
-
 	Label mainPanelLabel(65, 1, "Main Panel");
 	mainPanelLabel.setColor(Color::Blue, Color::Red);
 	p.Add(&mainPanelLabel);
@@ -57,11 +55,12 @@ int main(int argc, char** argv)
 	p.Add(&checkListLabel);
 
 	CheckList cc(1, (short)4, (short)4, { 30,14 }, { "one","two","three" });
-	cc.setColor(Color::Green, Color::Purple);
+	cc.setColor(Color::Green, Color::White);
 	p.Add(&cc);
 
 	/*RadioBox view & Label: "RadioBox"*/
 	Label radioBoxLabel(55, 3, "RadioBox");
+	radioBoxLabel.setColor(Color::Cyan, Color::Purple);
 	p.Add(&radioBoxLabel);
 
 	RadioBox rc(1, (short)45, (short)4, { 30,14 }, { "optionOne","optionTwo","optionThree" });
@@ -69,13 +68,16 @@ int main(int argc, char** argv)
 
 	/*TextBox view & Label: "TextBox"*/
 	Label textBoxLabel(16, 20, "TextBox");
+	textBoxLabel.setColor(Color::Green, Color::Purple);
 	p.Add(&textBoxLabel);
 
 	TextBox t(1, 4, 21, { 30,5 });
+	t.setColor(Color::Green, Color::White);
 	p.Add(&t);
 
 	/*NumericBox view & Label: "NumericBox"*/
 	Label numericBoxLabel(53, 20, "NumericBox");
+	numericBoxLabel.setColor(Color::Red, Color::White);
 	p.Add(&numericBoxLabel);
 
 	NumericBox n(1, 50, 21, { 15,3 }, 5);
@@ -86,12 +88,15 @@ int main(int argc, char** argv)
 	p.Add(&buttonsLabel);
 
 	Button btn1(1, 4, 31, { 8,2 }, "Button1");
+	btn1.setColor(Color::Red, Color::White);
 	p.Add(&btn1);
 
 	Button btn2(1, 15, 31, { 8,2 }, "Button2");
+	btn2.setColor(Color::Orange, Color::Black);
 	p.Add(&btn2);
 
 	Button btn3(1, 26, 31, { 8,2 }, "Button3");
+	btn3.setColor(Color::White, Color::Green);
 	p.Add(&btn3);
 
 	/*Panel view & Label: "Secondery Panel"; (Secondery Panel)*/
@@ -99,10 +104,12 @@ int main(int argc, char** argv)
 	p.Add(&p2);
 
 	Label seconderyPanelLabel(96, 4, "Secondery Panel");
+	seconderyPanelLabel.setColor(Color::Blue, Color::Orange);
 	p2.Add(&seconderyPanelLabel);
 	
 	/*ComboBox view & Label: "ComboBox"; (In secondery panel)*/
 	Label comboBoxLabel(84, 7, "ComboBox");
+	comboBoxLabel.setColor(Color::Purple, Color::White);
 	p2.Add(&comboBoxLabel);
 
 	ComboBox cb(1, 82, 8, { 10,2 }, { "one","two","three" });
@@ -110,6 +117,7 @@ int main(int argc, char** argv)
 
 	/*Message_Box view & Label: "MessageBox"; (In secondery panel)*/
 	Label messageBoxLabel(92, 17, "MessageBox");
+	messageBoxLabel.setColor(Color::Orange, Color::Green);
 	p2.Add(&messageBoxLabel);
 
 	Message_Box mb(1, 82, 18, { 30,8 }, "This is a message box!!!");
@@ -117,6 +125,7 @@ int main(int argc, char** argv)
 
 	/*RadioBox view & Label: "RadioBox"; (In secondery panel)*/
 	Label radioBoxLabel2(92, 29, "RadioBox");
+	radioBoxLabel2.setColor(Color::Cyan, Color::Blue);
 	p2.Add(&radioBoxLabel2);
 
 	RadioBox rc2(1, (short)82, (short)30, { 30,10 }, { "seconderyPanelOne","seconderyPanelTwo","seconderyPanelThree" });

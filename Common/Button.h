@@ -14,7 +14,7 @@ public:
 	Button(int, short, short, COORD, string);
 	void setBtnValue(string);
 	string getBtnValue();
-	void draw(Graphics & g, int x, int y, size_t z);
+	void draw(Graphics& g, int x, int y, size_t z);
 	bool myPureFunction() { return true; };
 	bool canGetFocus();
 	void mousePressed(int x, int y, bool isLeft, Graphics &g);

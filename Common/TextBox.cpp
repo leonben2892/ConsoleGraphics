@@ -6,11 +6,11 @@ TextBox::TextBox(int bord,short x, short y, COORD cor)
 	currentPosition = { x + 1 , y + 1 };
 }
 
-void TextBox::draw(Graphics & g, int x, int y, size_t z)
-{
+void TextBox::draw(Graphics& g, int x, int y, size_t z)
+{	
+	bs->drawBorderType(x, y, cord);
 	g.setBackground(this->background);
 	g.setForeground(this->foreground);
-	bs->drawBorderType(x, y, cord);
 	g.write(x + 1, y + 1, this->text);
 }
 

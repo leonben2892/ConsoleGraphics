@@ -20,12 +20,12 @@ public:
 	bool getIsChecked();
 	void setCbValue(string);
 	string getCbValue();
-	void draw(Graphics & g, int x, int y, size_t z);
+	void draw(Graphics& g, int x, int y, size_t z);
 	bool myPureFunction() { return true; };
 	bool canGetFocus();
 	void mousePressed(int x, int y, bool isLeft, Graphics &g);
 	void keyDown(int keyCode, char charecter, Graphics &g);
-	void setBackGround(Color FGcolor, Color BGcolor);
+	//void setBackGround(Color FGcolor, Color BGcolor);
 
 };
 

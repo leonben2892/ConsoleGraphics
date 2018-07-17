@@ -13,7 +13,7 @@ public:
 	TextBox(int bord,short x, short y, COORD cord);
 	string getValue() { return text; }
 	string setValue(string s) { this->text = s; }
-	void draw(Graphics & g, int x, int y, size_t z);
+	void draw(Graphics& g, int x, int y, size_t z);
 	bool myPureFunction() { return true; };
 
 	bool canGetFocus();

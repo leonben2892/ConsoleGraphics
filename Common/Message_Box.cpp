@@ -19,7 +19,7 @@ string Message_Box::getMessageBoxValue() {
 	return this->messageBoxValue;
 }
 
-void Message_Box::draw(Graphics & g, int x, int y, size_t z)
+void Message_Box::draw(Graphics& g, int x, int y, size_t z)
 {
 	g.setBackground(this->background);
 	g.setForeground(this->foreground);

@@ -14,5 +14,5 @@ class Label: public Control
         void setValue(string);
         void draw(Graphics& g, int x, int y, size_t z);
 		bool myPureFunction() { return true; };
-		void setBackGround(Color FGcolor, Color BGcolor);
+		//void setBackGround(Color FGcolor, Color BGcolor);
 };

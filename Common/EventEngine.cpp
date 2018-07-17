@@ -72,20 +72,22 @@ void EventEngine::run(Control &c)
 				}
 				else
 					f->keyDown(code, chr, _graphics);
-				if (code == 38 || code == 104 || code == 98 || code == 40)
-					redraw = false;
-				else
-				{
-					_graphics.setBackground(Color::Black);
-					redraw = true;
-				}
+				//if (code == 38 || code == 104 || code == 98 || code == 40)
+				//	/*redraw = false;*/
+				//	redraw = true;
+				//else
+				//{
+				//	_graphics.setBackground(Color::Black);
+				//	redraw = true;
+				//}
+				redraw = true;
 
 			}
 			break;
 		}
 		case MOUSE_EVENT:
 		{
-			_graphics.setBackground(Color::Black);
+			//_graphics.setBackground(Color::Black);
 			auto button = record.Event.MouseEvent.dwButtonState;
 			auto coord = record.Event.MouseEvent.dwMousePosition;
 			auto x = coord.X - c.getLeft();

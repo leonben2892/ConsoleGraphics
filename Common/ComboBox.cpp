@@ -1,14 +1,14 @@
 #include "ComboBox.h"
 
 ComboBox::ComboBox(int bord, short x, short y, COORD cor, vector<string> comboOptions) 
-	: Control::Control(bord,x,y,cor) , IsMenuOpenFlg(0), selectedIndex(-1), keyPressIndex(-1), intialComboBoxValue(""), Enablefocus(false)
+	: Control::Control(bord,x,y,cor) , IsMenuOpenFlg(0), selectedIndex(0), keyPressIndex(0), intialComboBoxValue(""), Enablefocus(false)
 {
 	for (size_t i = 0; i < comboOptions.size(); i++) {
 		items.push_back(new Label((short)(x + 1), (short)(y + cord.Y + 2 + i), comboOptions[i]));
 	}
 }
 
-void ComboBox::draw(Graphics & g, int x, int y, size_t z) 
+void ComboBox::draw(Graphics& g, int x, int y, size_t z) 
 {
 	g.setBackground(this->background);
 	g.setForeground(this->foreground);
@@ -64,17 +64,17 @@ void ComboBox::mousePressed(int x, int y, bool isLeft, Graphics &g)
 void ComboBox::keyDown(int keyCode, char charecter, Graphics &g) {
 	if (IsMenuOpenFlg == 1) {
 		if (keyCode == 40 || keyCode == 98) {// down arrow or NUM2 key
-			if (keyPressIndex == items.size() - 1)
+			/*if (keyPressIndex == items.size() - 1)
 				keyPressIndex = 0;
 			else
-				keyPressIndex++;
+				keyPressIndex++;*/
 			HoverElement(g, false);
 		}
 		else if (keyCode == 38 || keyCode == 104) {// up arrow or NUM8 key
-			if (keyPressIndex == 0)
+			/*if (keyPressIndex == 0)
 				keyPressIndex = items.size() - 1;
 			else
-				keyPressIndex--;
+				keyPressIndex--;*/
 			HoverElement(g, true);
 		}
 		else if (keyCode == 32 || keyCode == 13) {// Space or Enter key
@@ -84,9 +84,41 @@ void ComboBox::keyDown(int keyCode, char charecter, Graphics &g) {
 	}
 }
 
-void ComboBox::HoverElement(Graphics &g, bool Up) {
-
+void ComboBox::HoverElement(Graphics &g, bool Up) 
+{
 	if (Up)
+	{
+		if (keyPressIndex == 0)
+		{
+			this->items[keyPressIndex]->setColor(Color::Black, Color::White);
+			keyPressIndex = items.size() - 1;
+			this->items[keyPressIndex]->setColor(Color::White, Color::Black);
+		}
+		else
+		{
+			this->items[keyPressIndex]->setColor(Color::Black, Color::White);
+			--keyPressIndex;
+			this->items[keyPressIndex]->setColor(Color::White, Color::Black);
+		}					
+	}
+
+	else
+	{
+		if (keyPressIndex == items.size() - 1)
+		{
+			this->items[keyPressIndex]->setColor(Color::Black, Color::White);
+			keyPressIndex = 0;
+			this->items[keyPressIndex]->setColor(Color::White, Color::Black);
+		}
+			
+		else
+		{
+			this->items[keyPressIndex]->setColor(Color::Black, Color::White);
+			++keyPressIndex;
+			this->items[keyPressIndex]->setColor(Color::White, Color::Black);		
+		}			
+	}
+	/*if (Up)
 	{
 		if (keyPressIndex == 0)
 		{
@@ -131,5 +163,5 @@ void ComboBox::HoverElement(Graphics &g, bool Up) {
 
 
 	items[keyPressIndex]->setBackGround(Color::Black, Color::White);
-	items[keyPressIndex]->draw(g, items[keyPressIndex]->getLeft(), items[keyPressIndex]->getTop() , 0);
+	items[keyPressIndex]->draw(g, items[keyPressIndex]->getLeft(), items[keyPressIndex]->getTop() , 0);*/
 }

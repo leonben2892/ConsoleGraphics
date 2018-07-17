@@ -16,7 +16,7 @@ bool NumericBox::setCurrentValue(int currValue) {
 	}
 }
 
-void NumericBox::draw(Graphics &g, int x, int y, size_t z) {
+void NumericBox::draw(Graphics& g, int x, int y, size_t z) {
 	COORD c;
 	c.X = x;
 	c.Y = y;

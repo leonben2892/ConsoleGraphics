@@ -18,7 +18,7 @@ public:
 	RadioBox(int bordertype, short left, short top, COORD cord, vector<string> str);
 	bool addSelectedItem(string item);
 	bool removeSelectedItem(string item);
-	void draw(Graphics & g, int x, int y, size_t z);
+	void draw(Graphics& g, int x, int y, size_t z);
 	bool myPureFunction() { return true; };
 	bool canGetFocus();
 
