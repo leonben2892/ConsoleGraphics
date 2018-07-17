@@ -1,0 +1,5 @@
+﻿  unittest1.cpp
+     Creating library C:\Users\Leon\source\repos\software_engineer_finalProject\Debug\UnitTests.lib and object C:\Users\Leon\source\repos\software_engineer_finalProject\Debug\UnitTests.exp
+unittest1.obj : error LNK2019: unresolved external symbol "public: __thiscall Control::~Control(void)" (??1Control@@QAE@XZ) referenced in function "public: __thiscall NumericBox::~NumericBox(void)" (??1NumericBox@@QAE@XZ)
+unittest1.obj : error LNK2019: unresolved external symbol "public: __thiscall NumericBox::NumericBox(int,short,short,struct _COORD,int)" (??0NumericBox@@QAE@HFFU_COORD@@H@Z) referenced in function "public: void __thiscall UnitTests::NumericBoxTests::GetMinValue_ReturnsTrue(void)" (?GetMinValue_ReturnsTrue@NumericBoxTests@UnitTests@@QAEXXZ)
+C:\Users\Leon\source\repos\software_engineer_finalProject\Debug\UnitTests.dll : fatal error LNK1120: 2 unresolved externals
