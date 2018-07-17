@@ -21,6 +21,8 @@ string Message_Box::getMessageBoxValue() {
 
 void Message_Box::draw(Graphics & g, int x, int y, size_t z)
 {
+	g.setBackground(this->background);
+	g.setForeground(this->foreground);
 	if (toDraw) {
 		bs->drawBorderType(x, y, cord);
 		g.write(x + 1, y + 1, this->messageBoxValue);

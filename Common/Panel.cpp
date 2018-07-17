@@ -24,6 +24,8 @@ Control* Panel::getCurrentFocus()
 
 void Panel::draw(Graphics& g, int x, int y, size_t z)
 {
+	g.setBackground(this->background);
+	g.setForeground(this->foreground);
 	bs->drawBorderType(x, y, cord);
 	for (auto child : items)
 	{

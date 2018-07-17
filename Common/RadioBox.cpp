@@ -11,6 +11,8 @@ RadioBox::RadioBox(int bord, short x, short y, COORD cor, vector<string> str)
 
 void RadioBox::draw(Graphics & g, int x, int y, size_t z)
 {
+	g.setBackground(this->background);
+	g.setForeground(this->foreground);
 	bs->drawBorderType(x, y, cord);
 	for (size_t i = 0; i < allCheckBoxes.size(); ++i)
 		allCheckBoxes[i]->draw(g, (short)(x + 3), (short)(y + 1 + (i * 3)), z);

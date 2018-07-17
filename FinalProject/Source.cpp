@@ -45,14 +45,19 @@ int main(int argc, char** argv)
 	/*Panel view & Label: "Main Panel"*/
 	Panel p(2, 0, 0, { 130,45 });
 
+	p.setColor(Color::Orange, Color::Red);
+
 	Label mainPanelLabel(65, 1, "Main Panel");
+	mainPanelLabel.setColor(Color::Blue, Color::Red);
 	p.Add(&mainPanelLabel);
 
 	/*CheckList view & Label: "CheckList"*/
 	Label checkListLabel(15, 3, "CheckList");
+	checkListLabel.setColor(Color::Green, Color::White);
 	p.Add(&checkListLabel);
 
 	CheckList cc(1, (short)4, (short)4, { 30,14 }, { "one","two","three" });
+	cc.setColor(Color::Green, Color::Purple);
 	p.Add(&cc);
 
 	/*RadioBox view & Label: "RadioBox"*/

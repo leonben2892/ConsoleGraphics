@@ -21,6 +21,9 @@ void NumericBox::draw(Graphics &g, int x, int y, size_t z) {
 	c.X = x;
 	c.Y = y;
 
+	g.setBackground(this->background);
+	g.setForeground(this->foreground);
+
 	bs->drawBorderType(x, y, cord);
 	// drawing "-"
 	bs->drawBorderType(x + 1, y + 1, { 2,2 });

@@ -17,4 +17,7 @@ private:
 	DWORD _consoleMode;
 	void findAndSetFocusedItemInPanel(vector<Control*> controls,Control *focused);
 	void setFocusInMainPanel(vector<Control*> controls);
+	void setFirstFocus(Control& control);
+	bool isPanel(Control* control);
+	bool isList(Control* control);
 };

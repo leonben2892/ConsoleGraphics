@@ -10,6 +10,8 @@ ComboBox::ComboBox(int bord, short x, short y, COORD cor, vector<string> comboOp
 
 void ComboBox::draw(Graphics & g, int x, int y, size_t z) 
 {
+	g.setBackground(this->background);
+	g.setForeground(this->foreground);
 	bs->drawBorderType(x, y, cord);
 	bs->drawBorderType((short)(x + cord.X + 1), y, { 2,2 });
 	if (IsMenuOpenFlg == 1)

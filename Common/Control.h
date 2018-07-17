@@ -13,6 +13,7 @@ protected:
 	COORD cord;
 	BorderStrategy *bs;
 	COORD currentPosition;
+	Color background, foreground;
 
 private:
 	static Control* focusObj;
@@ -22,6 +23,9 @@ public:
 	Control(int borderType,short x,short y, COORD cor);
 	static Control* getFocus() { return focusObj; };
 	static void setFocus(Control& control) { focusObj = &control; };
+
+	void setColor(Color bg, Color fg);
+
 	
 	virtual void draw(Graphics& g, int x, int y, size_t z) {};
 	virtual void mousePressed(int x, int y, bool isLeft, Graphics &g) {};

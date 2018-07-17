@@ -21,6 +21,8 @@ string CheckBox::getCbValue() {
 
 void CheckBox::draw(Graphics & g, int x, int y, size_t z) 
 {
+	g.setBackground(this->background);
+	g.setForeground(this->foreground);
 	bs->drawBorderType(x, y, cord);
 	g.write(x + cord.X + 1, y + 1, cbValue);
 

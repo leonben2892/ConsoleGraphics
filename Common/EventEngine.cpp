@@ -7,39 +7,6 @@
 
 using namespace std;
 
-
-static bool isList(Control* control)
-{
-	if (dynamic_cast<RadioBox*>(control) != NULL || dynamic_cast<CheckList*>(control) != NULL)
-		return true;
-	return false;
-}
-
-static bool isPanel(Control* control)
-{
-	if (dynamic_cast<Panel*> (control) != NULL)
-		return true;
-	return false;
-}
-
-
-static void setFirstFocus(Control& control)
-{
-	vector <Control*> items;
-	control.getAllControls(&items);
-	for (int i = 0; i < items.size(); ++i)
-	{
-		if (items[i]->canGetFocus())
-		{
-			Control::setFocus(*items[i]);
-			return;
-		}		
-	}
-}
-
-
-
-
 EventEngine::EventEngine(DWORD input, DWORD output)
 	: _console(GetStdHandle(input)), _graphics(output)
 {
@@ -216,4 +183,33 @@ void EventEngine::setFocusInMainPanel(vector<Control*> controls)
 	}
 
 	Control::setFocus(*controls[0]);
+}
+
+bool EventEngine::isList(Control* control)
+{
+	if (dynamic_cast<RadioBox*>(control) != NULL || dynamic_cast<CheckList*>(control) != NULL)
+		return true;
+	return false;
+}
+
+bool EventEngine::isPanel(Control* control)
+{
+	if (dynamic_cast<Panel*> (control) != NULL)
+		return true;
+	return false;
+}
+
+
+void EventEngine::setFirstFocus(Control& control)
+{
+	vector <Control*> items;
+	control.getAllControls(&items);
+	for (int i = 0; i < items.size(); ++i)
+	{
+		if (items[i]->canGetFocus())
+		{
+			Control::setFocus(*items[i]);
+			return;
+		}
+	}
 }

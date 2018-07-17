@@ -17,8 +17,13 @@ void Label::setValue(string value)
 
 void Label::draw(Graphics& g, int x, int y, size_t z)
 {
-    if (!z)
-        g.write(x,y,value);
+	if (!z)
+	{
+		g.setBackground(this->background);
+		g.setForeground(this->foreground);
+		g.write(x, y, value);
+	}
+        
 }
 
 void Label::setBackGround(Color FGcolor, Color BGcolor)

@@ -22,7 +22,18 @@ Control::Control(int borderType,short x, short y,COORD cor)
 	default:
 		break;
 	}
+
+	background = Color::Black;
+	foreground = Color::White;
 }
+
+
+void Control::setColor(Color bg, Color fg)
+{
+	this->background = bg;
+	this->foreground = fg;
+}
+
 
 
 Control::~Control()
