@@ -59,7 +59,7 @@ namespace UnitTests
 			//Arrange
 			NumericBox n(1, 50, 21, { 15,3 }, 5);
 			n.setMinValue(10);
-			n.setMaxValue(20);
+			n.setMaxValue(30);
 
 			//Act
 			bool canBeCurrVal = n.setCurrentValue(26);
