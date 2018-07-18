@@ -42,6 +42,8 @@ public:
 	virtual bool setLocalFocus() { return false; };
 	virtual Control* getCurrentFocus() { return NULL; };
 
+	virtual void resetFocus() {};
+
 	~Control();
 };
 

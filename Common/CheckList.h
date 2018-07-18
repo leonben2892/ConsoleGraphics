@@ -33,6 +33,8 @@ public:
 
 	void getAllControls(vector<Control*>* controls);
 
+	void resetFocus();
+
 
 };
 

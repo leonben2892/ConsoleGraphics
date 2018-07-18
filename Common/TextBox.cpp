@@ -8,7 +8,7 @@ TextBox::TextBox(int bord,short x, short y, COORD cor)
 
 void TextBox::draw(Graphics& g, int x, int y, size_t z)
 {	
-	bs->drawBorderType(x, y, cord);
+	bs->drawBorderType(x, y, cord ,g);
 	g.setBackground(this->background);
 	g.setForeground(this->foreground);
 	g.write(x + 1, y + 1, this->text);

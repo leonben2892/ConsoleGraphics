@@ -24,9 +24,9 @@ void NumericBox::draw(Graphics& g, int x, int y, size_t z) {
 	g.setBackground(this->background);
 	g.setForeground(this->foreground);
 
-	bs->drawBorderType(x, y, cord);
+	bs->drawBorderType(x, y, cord ,g);
 	// drawing "-"
-	bs->drawBorderType(x + 1, y + 1, { 2,2 });
+	bs->drawBorderType(x + 1, y + 1, { 2,2 } ,g);
 	g.write(c.X + 2, c.Y + 2, "\x2D");
 	/**********************/
 
@@ -36,7 +36,7 @@ void NumericBox::draw(Graphics& g, int x, int y, size_t z) {
 	/**********************/
 
 	// drawing "+"
-	bs->drawBorderType((short)(x + cord.X - 3), y + 1, { 2,2 });
+	bs->drawBorderType((short)(x + cord.X - 3), y + 1, { 2,2 } ,g);
 	g.write(c.X + cord.X - 2, c.Y + 2, "\x2B");
 	/**********************/
 }

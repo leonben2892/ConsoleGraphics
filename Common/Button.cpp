@@ -15,7 +15,7 @@ void Button::draw(Graphics& g, int x, int y, size_t z)
 {
 	g.setBackground(this->background);
 	g.setForeground(this->foreground);
-	bs->drawBorderType(x, y, cord);
+	bs->drawBorderType(x, y, cord ,g);
 	g.write(x + 1, y + 1, btnValue);
 }
 

@@ -26,7 +26,7 @@ void Panel::draw(Graphics& g, int x, int y, size_t z)
 {
 	g.setBackground(this->background);
 	g.setForeground(this->foreground);
-	bs->drawBorderType(x, y, cord);
+	bs->drawBorderType(x, y, cord ,g);
 	for (auto child : items)
 	{
 		child->draw(g, child->getLeft(), child->getTop(), z);
@@ -51,6 +51,7 @@ bool Panel::canGetFocus()
 
 void Panel::mousePressed(int x, int y, bool isLeft, Graphics &g)
 {
+	prevFocus = items[currentFocus];
 	int index = 0;
 	if (!isLeft)
 		return;
@@ -58,6 +59,11 @@ void Panel::mousePressed(int x, int y, bool isLeft, Graphics &g)
 	{
 		if (g.isInside(x, y, child->getLeft(), child->getTop(), child->getLeft() + child->getCord().X, child->getTop() + child->getCord().Y))
 		{
+			if (prevFocus != child)
+			{
+				prevFocus->resetFocus();
+			}
+
 			child->mousePressed(x, y, isLeft, g);
 			if (child->canGetFocus())
 			{
@@ -72,12 +78,6 @@ void Panel::mousePressed(int x, int y, bool isLeft, Graphics &g)
 
 void Panel::keyDown(int keyCode, char charecter, Graphics &g)
 {
-	/*for (auto child : items)
-	{
-		if (child->canGetFocus())
-			child->keyDown(keyCode, charecter , g);
-	}*/
-
 	items[currentFocus]->keyDown(keyCode, charecter, g);
 }
 
@@ -96,6 +96,9 @@ bool Panel::setLocalFocus()
 		if (this->items[currentFocus]->setLocalFocus())
 			return false;
 	}
+
+	prevFocus = items[currentFocus];
+
 	++currentFocus;
 	for ((currentFocus); currentFocus < items.size(); ++currentFocus)	// looking for the next Focuseble object
 	{

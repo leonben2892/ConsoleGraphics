@@ -1,32 +1,30 @@
 #include "BorderStrategy.h"
 
-void NoBorder::drawBorderType(int x, int y, COORD cor) {
+void NoBorder::drawBorderType(int x, int y, COORD cor, Graphics& g) {
 	this->x = x;
 	this->y = y;
 	this->c = cor;
 }
 
-void SingleBorder::drawBorderType(int x, int y, COORD cor) {
+void SingleBorder::drawBorderType(int x, int y, COORD cor, Graphics& g) {
 	this->x = x;
 	this->y = y;
 	this->c = cor;
-	draw('\xDA', '\xC4', '\xBF', '\xB3', '\xC0', '\xD9', x, y, c);
+	draw('\xDA', '\xC4', '\xBF', '\xB3', '\xC0', '\xD9', x, y, c, g);
 }
 
-void DoubleBorder::drawBorderType(int x, int y, COORD cor) {
+void DoubleBorder::drawBorderType(int x, int y, COORD cor, Graphics& g) {
 	this->x = x;
 	this->y = y;
 	this->c = cor;
-	draw('\xC9', '\xCD', '\xBB', '\xBA', '\xC8', '\xBC', x, y, cor);
+	draw('\xC9', '\xCD', '\xBB', '\xBA', '\xC8', '\xBC', x, y, cor, g);
 }
 
-void BorderStrategy::draw(char topLeft, char hrLine, char topRight, char vrLine, char botoomLeft, char bottomRight, int x, int y, COORD cord) {
+void BorderStrategy::draw(char topLeft, char hrLine, char topRight, char vrLine, char botoomLeft, char bottomRight, int x, int y, COORD cord, Graphics& g) {
 	COORD c;
 	c.X = x;
 	c.Y = y;
-	CONSOLE_SCREEN_BUFFER_INFO info;
-	GetConsoleScreenBufferInfo(out, &info);
-	SetConsoleCursorPosition(out, { c.X, c.Y });
+	g.moveTo(c.X, c.Y);
 	for (int i = 0; i < cord.X; ++i)
 	{
 		if (i == 0)
@@ -35,20 +33,15 @@ void BorderStrategy::draw(char topLeft, char hrLine, char topRight, char vrLine,
 			cout << hrLine;
 	}
 	cout << topRight;
-	int v = 1;
-	for (int i = 0; i < cord.Y; ++i)
+
+
+	for (int horizontal = 1; horizontal < cord.Y; ++horizontal)
 	{
-		SetConsoleCursorPosition(out, { c.X, (SHORT)(c.Y + v) });
-		cout << vrLine;
-
-		/* here we need to draw the background*/
-
-		SetConsoleCursorPosition(out, { c.X + cord.X, (SHORT)(c.Y + v) });
-		cout << vrLine;
-		++v;
+		g.moveTo(c.X, (SHORT)(c.Y + horizontal));
+		drawLine(vrLine);
 	}
 
-	SetConsoleCursorPosition(out, { c.X, c.Y + cord.Y });
+	g.moveTo(c.X, c.Y + cord.Y);
 
 	for (int i = 0; i < cord.X; ++i)
 	{
@@ -59,4 +52,21 @@ void BorderStrategy::draw(char topLeft, char hrLine, char topRight, char vrLine,
 	}
 
 	cout << bottomRight;
+}
+
+void BorderStrategy::drawLine(char vrLine)
+{
+	for (int i = 0; i < c.X; ++i)
+	{
+		if (i == 0 || i == c.X)
+		{
+			cout << vrLine;
+		}
+
+		else
+		{
+			cout << " ";
+		}
+	}
+	cout << vrLine;
 }

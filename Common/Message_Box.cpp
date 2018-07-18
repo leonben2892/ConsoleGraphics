@@ -24,7 +24,7 @@ void Message_Box::draw(Graphics& g, int x, int y, size_t z)
 	g.setBackground(this->background);
 	g.setForeground(this->foreground);
 	if (toDraw) {
-		bs->drawBorderType(x, y, cord);
+		bs->drawBorderType(x, y, cord ,g);
 		g.write(x + 1, y + 1, this->messageBoxValue);
 		for (size_t i = 0; i < this->messageBoxBtns.size(); i++)
 			this->messageBoxBtns[i]->draw(g, (short)(x + 2 + 10 * i), (short)(y + this->cord.Y - 4), z);

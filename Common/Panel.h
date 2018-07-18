@@ -13,7 +13,7 @@ class Panel : public Control
 private:
 	vector<Control*> items;
 	int currentFocus;
-
+	Control* prevFocus;
 	bool isList(Control* control);
 
 public:

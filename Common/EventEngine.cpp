@@ -17,9 +17,13 @@ EventEngine::EventEngine(DWORD input, DWORD output)
 void EventEngine::run(Control &c)
 {
 	int currentIndex = 0;
+	Control* previousFocus;
 
 	//set 1st child as focused by default
 	setFirstFocus(c);
+
+	previousFocus = Control::getFocus();
+
 
 	for (bool redraw = true;;)
 	{
@@ -34,10 +38,10 @@ void EventEngine::run(Control &c)
 			_graphics.moveTo(c.getFocus()->getCurrentPosition().X, c.getFocus()->getCurrentPosition().Y);
 			redraw = false;
 		}
-		//vector<Control*> items;
 		INPUT_RECORD record;
 		DWORD count;
 		ReadConsoleInput(_console, &record, 1, &count);
+
 		switch (record.EventType)
 		{
 		case KEY_EVENT:
@@ -55,16 +59,30 @@ void EventEngine::run(Control &c)
 				auto chr = record.Event.KeyEvent.uChar.AsciiChar;
 				if (code == VK_TAB)
 				{
+					/* checking if we moved to next object*/
+					if (previousFocus != f)
+					{
+						previousFocus->resetFocus();
+					}
+
 					if (isList(f))		// check if the item is CheckList or RadioBox
 					{
 						if (f->setLocalFocus()) {		//check if still can navigate inside the list
 							f->keyDown(code, chr, _graphics);
 						}
 						else
+						{
+							previousFocus->resetFocus();
+							previousFocus = f;
+
 							moveFocus(c, f);	// else- move to next object
+						}						
 					}				
 					else
 					{
+						previousFocus->resetFocus();
+						previousFocus = f;
+
 						moveFocus(c, f);	//move focus to the next object
 						currentIndex++;
 					}
@@ -72,14 +90,7 @@ void EventEngine::run(Control &c)
 				}
 				else
 					f->keyDown(code, chr, _graphics);
-				//if (code == 38 || code == 104 || code == 98 || code == 40)
-				//	/*redraw = false;*/
-				//	redraw = true;
-				//else
-				//{
-				//	_graphics.setBackground(Color::Black);
-				//	redraw = true;
-				//}
+
 				redraw = true;
 
 			}
@@ -87,7 +98,6 @@ void EventEngine::run(Control &c)
 		}
 		case MOUSE_EVENT:
 		{
-			//_graphics.setBackground(Color::Black);
 			auto button = record.Event.MouseEvent.dwButtonState;
 			auto coord = record.Event.MouseEvent.dwMousePosition;
 			auto x = coord.X - c.getLeft();
