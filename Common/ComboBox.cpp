@@ -8,6 +8,14 @@ ComboBox::ComboBox(int bord, short x, short y, COORD cor, vector<string> comboOp
 	}
 }
 
+string ComboBox::getSelectedItem()
+{
+	if (selectedIndex == -1)
+		return intialComboBoxValue;
+	else
+		return items[selectedIndex]->getValue();
+}
+
 void ComboBox::draw(Graphics& g, int x, int y, size_t z) 
 {
 	g.setBackground(this->background);
