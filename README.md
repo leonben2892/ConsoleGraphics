@@ -1,6 +1,6 @@
-# Console Graphics Library
+# Console Graphics
 
-Console graphics library is a library used to develop user interface on windows terminal environment.
+Console graphics is a library used to develop user interface on windows terminal environment.
 The Library consist of the following components: Label, Button, TextBox, NumericBox, ComboBox, CheckList, RadioBox, MessageBox and Panel.
 
 ## Components Overview
